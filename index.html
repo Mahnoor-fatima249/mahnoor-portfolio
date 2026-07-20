@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahnoor Fatima | Portfolio</title>
+    <!-- Google Fonts Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Welcome Screen -->
+    <div id="welcome-screen">
+        <div class="welcome-card">
+            <span style="font-size: 2.8rem; display: block; margin-bottom: 10px; color: #3b7a8a;">✨</span>
+            <h1>Welcome to <span>Mahnoor's</span> Portfolio</h1>
+            <p>Explore backend engineering projects, AI development workflows, and professional experience.</p>
+            <a href="#about" class="explore-btn" onclick="openPortfolio(event)"><i class="fas fa-arrow-right" style="margin-right: 8px;"></i> Enter Portfolio</a>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        
+        <!-- Hamburger Icon -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Links Container -->
+        <div class="nav-links" id="navLinks">
+            <a href="#about" class="nav-btn" onclick="closeMenu()">About Me</a>
+            <a href="#education" class="nav-btn" onclick="closeMenu()">Education</a>
+            <a href="#skills" class="nav-btn" onclick="closeMenu()">Skills</a>
+            <a href="#services" class="nav-btn" onclick="closeMenu()">Services</a>
+            <a href="#experience" class="nav-btn" onclick="closeMenu()">Experience</a>
+            <a href="#projects" class="nav-btn" onclick="closeMenu()">My Work</a>
+            <a href="#github-activity" class="nav-btn" onclick="closeMenu()">GitHub Activity</a>
+            <a href="#leetcode" class="nav-btn" onclick="closeMenu()">LeetCode</a>
+            <a href="#testimonials" class="nav-btn" onclick="closeMenu()">Testimonials</a>
+            <a href="#colleague-testimonials" class="nav-btn" onclick="closeMenu()">Colleagues</a>
+            <a href="#achievements" class="nav-btn" onclick="closeMenu()">Achievements</a>
+            <a href="#certifications" class="nav-btn" onclick="closeMenu()">Certifications</a>
+            <a href="#contact" class="nav-btn" onclick="closeMenu()">Contact</a>
+        </div>
+
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+            <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+    </nav>
+
+    <!-- Hero / About Section -->
+    <section id="about" class="hero-container" style="padding-top: 100px;">
+        <div class="hero-content">
+            <div class="hero-text-box">
+                <span class="hero-badge" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a;">✨ Backend & AI Engineer</span>
+                <h1 class="hero-title">Mahnoor Fatima</h1>
+                <p class="tagline">Backend & AI Engineer</p>
+                <p class="hero-desc">I am a BSIT student (6th Semester) at VU Pakistan. Currently serving as a <strong>Backend Developer at NexeAgent</strong> and <strong>Technical Director at WICS</strong>.</p>
+                <div class="bio-grid">
+                    <div class="bio-item"><span>🚀</span> AI/ML Internships (DecodeLabs & TEYZIX CORE)</div>
+                    <div class="bio-item"><span>💡</span> HEC GenAI Top Performer (96.08%)</div>
+                    <div class="bio-item"><span>👑</span> Led Multiple Hackathons as Team Leader</div>
+                </div>
+                <div style="margin-top: 25px;">
+                    <a href="resume.pdf" target="_blank" class="action-btn"><i class="fas fa-download"></i> Download Resume / CV</a>
+                </div>
+            </div>
+            <div class="hero-image-box">
+                <div class="image-frame" style="border: 4px solid #3b7a8a;">
+                    <img src="profile.jpg" alt="Mahnoor Fatima" class="main-profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="container stats-container">
+        <div class="stats-grid">
+            <div class="stat-box card">
+                <h3 style="color: #3b7a8a;">6+</h3>
+                <p>Projects Built</p>
+            </div>
+            <div class="stat-box card">
+                <h3 style="color: #3b7a8a;">3+</h3>
+                <p>AI/Tech Internships</p>
+            </div>
+            <div class="stat-box card">
+                <h3 style="color: #3b7a8a;">96.08%</h3>
+                <p>HEC GenAI Score</p>
+            </div>
+            <div class="stat-box card">
+                <h3 style="color: #3b7a8a;">2+</h3>
+                <p>Hackathons Led as Team Lead</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="container">
+        <h2>Education</h2>
+        <div class="timeline">
+            <div class="timeline-item card" style="padding: 20px; border-radius: 12px;">
+                <h3>Bachelor of Science in Information Technology (BSIT)</h3>
+                <p class="company" style="color: #3b7a8a; font-weight: 600;">Virtual University of Pakistan (VU Pakistan)</p>
+                <p class="timeline-desc">6th Semester Student | Focusing on software engineering, database systems, and object-oriented paradigms.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack & Skills Section with Icons -->
+    <section id="skills" class="container">
+        <h2>Core Tech Stack & Skills</h2>
+        <div class="skills-grid">
+            <span class="skill-tag"><i class="fab fa-python" style="margin-right: 6px;"></i> Python</span>
+            <span class="skill-tag"><i class="fas fa-layer-group" style="margin-right: 6px;"></i> Django</span>
+            <span class="skill-tag"><i class="fas fa-bolt" style="margin-right: 6px;"></i> FastAPI</span>
+            <span class="skill-tag"><i class="fab fa-js" style="margin-right: 6px;"></i> JavaScript</span>
+            <span class="skill-tag"><i class="fab fa-react" style="margin-right: 6px;"></i> React</span>
+            <span class="skill-tag"><i class="fab fa-java" style="margin-right: 6px;"></i> Java</span>
+            <span class="skill-tag"><i class="fas fa-code" style="margin-right: 6px;"></i> C++</span>
+            <span class="skill-tag"><i class="fas fa-cube" style="margin-right: 6px;"></i> OOP</span>
+            <span class="skill-tag"><i class="fas fa-sitemap" style="margin-right: 6px;"></i> DSA</span>
+            <span class="skill-tag"><i class="fas fa-network-wired" style="margin-right: 6px;"></i> RESTful APIs</span>
+            <span class="skill-tag"><i class="fas fa-eye" style="margin-right: 6px;"></i> Computer Vision</span>
+            <span class="skill-tag"><i class="fas fa-brain" style="margin-right: 6px;"></i> AI / GenAI APIs</span>
+            <span class="skill-tag"><i class="fas fa-microchip" style="margin-right: 6px;"></i> Groq API</span>
+            <span class="skill-tag"><i class="fas fa-robot" style="margin-right: 6px;"></i> Google AI Studio</span>
+            <span class="skill-tag"><i class="fas fa-cloud" style="margin-right: 6px;"></i> Azure ML Studio</span>
+            <span class="skill-tag"><i class="fab fa-docker" style="margin-right: 6px;"></i> Docker</span>
+            <span class="skill-tag"><i class="fab fa-git-alt" style="margin-right: 6px;"></i> Git & GitHub</span>
+        </div>
+
+        <h3 style="margin-top: 30px; font-size: 1.2rem;">Soft Skills & Languages</h3>
+        <div class="skills-grid" style="margin-top: 10px;">
+            <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);"><i class="fas fa-users" style="margin-right: 6px;"></i> Team Leadership</span>
+            <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);"><i class="fas fa-lightbulb" style="margin-right: 6px;"></i> Problem Solving</span>
+            <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);"><i class="fas fa-comments" style="margin-right: 6px;"></i> Communication</span>
+            <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);">Urdu (Native)</span>
+            <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);">English (Professional)</span>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container">
+        <h2>What I Do & Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-server"></i></div>
+                <h3>Backend Development</h3>
+                <p>Building secure, scalable, and high-performance server-side architectures, business logic, and database management systems.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-brain"></i></div>
+                <h3>AI & GenAI Solutions</h3>
+                <p>Integrating advanced LLM workflows, custom AI agents, computer vision models, and state-of-the-art AI developer APIs.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+                <h3>RESTful APIs & Integration</h3>
+                <p>Designing, building, and connecting robust APIs to ensure smooth communication between frontend web applications and backend servers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Activity Graph Section -->
+    <section id="github-activity" class="container">
+        <h2>GitHub Contribution Activity</h2>
+        <p style="font-size: 0.95rem; margin-bottom: 20px;">A visual overview of my daily coding consistency and open-source contributions.</p>
+        <div class="card" style="padding: 20px; border-radius: 16px; text-align: center; overflow-x: auto;">
+            <!-- GitHub Stats / Contribution Graph Widget -->
+            <img src="https://github-readme-activity-graph.vercel.app/graph?username=Mahnoor-fatima249&theme=react-dark&hide_border=true&area=true" alt="Mahnoor's GitHub Activity Graph" style="max-width: 100%; height: auto; border-radius: 12px;">
+        </div>
+    </section>
+
+    <!-- LeetCode Progress Section -->
+    <section id="leetcode" class="container">
+        <h2>Problem Solving & LeetCode Progress</h2>
+        <div class="leetcode-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
+                <div>
+                    <h3 style="font-size: 1.4rem;"><i class="fas fa-code" style="color: #ffa116;"></i> Algorithmic Problem Solving</h3>
+                    <p style="font-size: 0.95rem; margin-top: 5px;">Consistent practice on LeetCode focusing on data structures and advanced coding concepts.</p>
+                </div>
+                <a href="https://leetcode.com/u/JbP00b4yGi/" target="_blank" class="action-btn" style="background: #ffa116; color: #fff;"><i class="fas fa-external-link-alt"></i> Visit LeetCode Profile</a>
+            </div>
+
+            <div class="lc-stats-grid">
+                <div class="lc-stat-box">
+                    <h4>13</h4>
+                    <p style="font-size: 0.85rem; font-weight: 600;">Total Solved</p>
+                </div>
+                <div class="lc-stat-box">
+                    <h4 style="color: #2ecc71;">5</h4>
+                    <p style="font-size: 0.85rem; font-weight: 600;">Easy</p>
+                </div>
+                <div class="lc-stat-box">
+                    <h4 style="color: #f39c12;">3</h4>
+                    <p style="font-size: 0.85rem; font-weight: 600;">Medium</p>
+                </div>
+                <div class="lc-stat-box">
+                    <h4 style="color: #e74c3c;">5</h4>
+                    <p style="font-size: 0.85rem; font-weight: 600;">Hard</p>
+                </div>
+                <div class="lc-stat-box">
+                    <h4 style="color: #3498db;">93.3%</h4>
+                    <p style="font-size: 0.85rem; font-weight: 600;">Acceptance Rate</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <p style="font-size: 0.9rem; font-weight: 600; margin-bottom: 8px;">Key Topics Covered:</p>
+                <div class="lc-tags">
+                    <span class="lc-tag">Dynamic Programming</span>
+                    <span class="lc-tag">Tree / Binary Tree</span>
+                    <span class="lc-tag">Depth-First Search (DFS)</span>
+                    <span class="lc-tag">Two Pointers</span>
+                    <span class="lc-tag">Database</span>
+                    <span class="lc-tag">Sliding Window</span>
+                    <span class="lc-tag">Greedy</span>
+                    <span class="lc-tag">Sorting & Hash Table</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section id="experience" class="container">
+        <h2>Professional Experience & Leadership</h2>
+        <div class="timeline">
+            <div class="timeline-item card" style="padding: 20px; border-radius: 12px;">
+                <h3>Backend Developer</h3>
+                <p class="company" style="color: #3b7a8a; font-weight: 600;">NexeAgent</p>
+                <p class="timeline-desc">Building scalable backend frameworks, system architectures, and workflow automation solutions.</p>
+            </div>
+            <div class="timeline-item card" style="padding: 20px; border-radius: 12px;">
+                <h3>Technical Director</h3>
+                <p class="company" style="color: #3b7a8a; font-weight: 600;">Women in Computer Science (WICS)</p>
+                <p class="timeline-desc">Leading technical initiatives, coding cohorts, and community skill-building programs.</p>
+            </div>
+            <div class="timeline-item card" style="padding: 20px; border-radius: 12px;">
+                <h3>Team Lead & Hackathon Participant</h3>
+                <p class="company" style="color: #3b7a8a; font-weight: 600;">National Hackathons (AI Seekho & Others)</p>
+                <p class="timeline-desc">Successfully led technical teams as a Team Lead in competitive hackathons, managing project workflows and execution.</p>
+            </div>
+            <div class="timeline-item card" style="padding: 20px; border-radius: 12px;">
+                <h3>Full-Stack & AI Intern</h3>
+                <p class="company" style="color: #3b7a8a; font-weight: 600;">TEYZIX CORE & DecodeLabs</p>
+                <p class="timeline-desc">Completed full-stack development tasks and machine learning model integrations successfully.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2>My Projects & Live Demos</h2>
+        <div class="project-grid">
+            <div class="card" style="padding: 20px; border-radius: 16px;">
+                <h3>AI Study Assistant</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;">Smart educational assistant powered by LLM workflows.</p>
+                <div class="video-demo-box" title="Project Demo Preview">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div style="margin-top: 15px;">
+                    <a href="https://github.com/Mahnoor-fatima249/AI_Study_Assistant" target="_blank" class="action-btn">GitHub Repository</a>
+                </div>
+            </div>
+            <div class="card" style="padding: 20px; border-radius: 16px;">
+                <h3>AI Agentic Dev</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;">Autonomous agentic workflows for software developers.</p>
+                <div class="video-demo-box" title="Project Demo Preview">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div style="margin-top: 15px;">
+                    <a href="https://github.com/Mahnoor-fatima249/ai-agentic-Developer" target="_blank" class="action-btn">GitHub Repository</a>
+                </div>
+            </div>
+            <div class="card" style="padding: 20px; border-radius: 16px;">
+                <h3>Object Detection</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;">Computer Vision model integration using Caffe & Python.</p>
+                <div style="margin-top: 15px;">
+                    <a href="https://github.com/Mahnoor-fatima249/AI-Object-Detection-Caffe" target="_blank" class="action-btn">GitHub Repository</a>
+                </div>
+            </div>
+            <div class="card" style="padding: 20px; border-radius: 16px;">
+                <h3>PAK Job Finder</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;">Job portal application hosted on Hugging Face Spaces.</p>
+                <div style="margin-top: 15px;">
+                    <a href="https://huggingface.co/spaces/bc230425989/pak_job" target="_blank" class="action-btn">Live App</a>
+                </div>
+            </div>
+            <div class="card" style="padding: 20px; border-radius: 16px;">
+                <h3>Mahnoor AI</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;">Custom conversational AI application workspace.</p>
+                <div style="margin-top: 15px;">
+                    <a href="https://huggingface.co/spaces/bc230425989/Mahnoor-AI" target="_blank" class="action-btn">Live App</a>
+                </div>
+            </div>
+            <div class="card" style="padding: 20px; border-radius: 16px;">
+                <h3>Language Translator</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;">Real-time language translation web utility.</p>
+                <div style="margin-top: 15px;">
+                    <a href="https://huggingface.co/spaces/bc230425989/Language-translator" target="_blank" class="action-btn">Live App</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="container">
+        <h2>Recommendations & Feedback</h2>
+        <div class="cert-grid">
+            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+                <h3>TEYZIX CORE (Internship Evaluation)</h3>
+                <p style="margin-top: 10px; margin-bottom: 15px;">"Mahnoor demonstrated exceptional dedication, technical execution, and problem-solving capabilities during her Full-Stack Web Development internship. Outstanding performance on core project tasks!"</p>
+                <a href="certificates/teyzix-LOR.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View LOR Document</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Colleague & Hackathon Testimonials Section -->
+    <section id="colleague-testimonials" class="container">
+        <h2>Hackathon & Colleague Testimonials</h2>
+        <div class="cert-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+                <h3>Rana Abdullah</h3>
+                <p style="font-style: italic; margin-top: 10px; margin-bottom: 15px;">"Great to work with Mahnoor. Fast delivery, clean code, and zero issues. Would definitely hire again."</p>
+                <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);">Hackathon Collaborator</span>
+            </div>
+            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+                <h3>Muhammad Maooz Khan</h3>
+                <p style="font-style: italic; margin-top: 10px; margin-bottom: 15px;">"Strong leadership excellent communication and a highly supportive approach Consistently delivers quality work promotes great teamwork and maintains a positive attitude that creates an excellent team environment"</p>
+                <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);">Hackathon Collaborator</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="container">
+        <h2>Achievements & Awards</h2>
+        <div class="cert-grid">
+            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+                <h3>AI Seekho 2026</h3>
+                <p style="margin-top: 10px; margin-bottom: 15px;">Silver Tier Swag Package Winner (#VibeKaregaPakistan) - Team Lead</p>
+                <a href="Awards/aiseekho-silver.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-image"></i> View Achievement Image</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="container">
+        <h2>Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+                <h3>Generative AI Developer</h3>
+                <p style="margin: 10px 0 15px;">NCEAC - HEC Training (Top Performer)</p>
+                <a href="certificates/hec-certificate.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+            </div>
+            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+                <h3>Aspire Leaders Program</h3>
+                <p style="margin: 10px 0 15px;">2026 Cohort (Harvard Affiliated)</p>
+                <a href="certificates/aspire-certificatefront.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+            </div>
+            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+                <h3>Aspire Leaders Program</h3>
+                <p style="margin: 10px 0 15px;">2026 Cohort (Harvard Affiliated)</p>
+                <a href="certificates/aspire-certificateback.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+            </div>
+            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+                <h3>Full Stack Web Dev</h3>
+                <p style="margin: 10px 0 15px;">TEYZIX CORE Internship</p>
+                <a href="certificates/teyzix-certificate.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+            </div>
+            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+                <h3>Full Stack Web Dev</h3>
+                <p style="margin: 10px 0 15px;">TEYZIX CORE Internship</p>
+                <a href="certificates/teyzix-LOR.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View LOR</a>
+            </div>
+            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+                <h3>AI & Automation</h3>
+                <p style="margin: 10px 0 15px;">Nexe-Agent Internship</p>
+                <a href="certificates/nexe-certificate.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+            </div>
+            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+                <h3>AI Internship</h3>
+                <p style="margin: 10px 0 15px;">DecodeLabs Virtual Program</p>
+                <a href="certificates/decodelabs-certificate.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+            </div>
+            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+                <h3>AI Seekho 2026</h3>
+                <p style="margin: 10px 0 15px;">National Hackathon Participant</p>
+                <a href="certificates/aiseekho-certificate.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="container">
+        <h2>Get In Touch</h2>
+        <p style="text-align: center; margin-bottom: 20px;">Have a project in mind or want to collaborate? Drop a message directly to my Gmail!</p>
+        
+        <form class="contact-form card" action="https://formspree.io/f/xrenkkbz" method="POST" style="padding: 30px; border-radius: 16px; max-width: 600px; margin: 0 auto;">
+            <div class="form-group" style="margin-bottom: 15px;">
+                <input type="text" name="name" placeholder="Your Name" required class="form-input" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-dark);">
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <input type="email" name="_replyto" placeholder="Your Email" required class="form-input" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-dark);">
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <textarea name="message" rows="5" placeholder="Your Message" required class="form-input" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-dark);"></textarea>
+            </div>
+            <button type="submit" class="action-btn submit-btn" style="width: 100%;">Send Message to Gmail</button>
+        </form>
+    </section>
+
+    <footer>
+        <a href="https://www.linkedin.com/in/mahnoor-fatima-529b91301/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Mahnoor-fatima249" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/mahnoor_backend?utm_source=qr&igsh=cTc5aG5leGdrbmh6" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/1BV42TwagL/" target="_blank"><i class="fab fa-facebook"></i></a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
