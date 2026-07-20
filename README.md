@@ -1,44 +1,67 @@
-# 🌟 Mahnoor Fatima | Portfolio
+<div align="center">
 
-Welcome to the official source code of my personal portfolio website! This portfolio highlights my background as a Backend & AI Engineer, showcasing my technical projects, core stack, professional experience, and certifications.
+# ✨ Hi there, I'm Mahnoor Fatima! 
+### 🚀 Backend & AI Engineer | Building Scalable Systems & Intelligent Workflows
 
-🔗 **Live Website:** [mahnoor-portfolio.vercel.app](https://mahnoor-portfolio.vercel.app) *(Replace with your actual Vercel URL once deployed)*
+<p align="center">
+  <a href="https://mahnoor-portfolio.vercel.app">
+    <img src="https://img.shields.io/badge/🌐_Website-Live_Preview-3b7a8a?style=for-the-badge&logo=vercel&logoColor=white&colorB=24292e" alt="Website">
+  </a>
+  <a href="https://www.linkedin.com/in/mahnoor-fatima-529b91301/">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+  </a>
+  <a href="https://github.com/Mahnoor-fatima249">
+    <img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+  </a>
+  <a href="https://www.instagram.com/mahnoor_backend">
+    <img src="https://img.shields.io/badge/Instagram-Follow-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
+  </a>
+</p>
 
----
-
-## 🛠️ Core Tech Stack & Tools
-
-* **Languages:** Python, JavaScript, Java, C++
-* **Backend Frameworks:** Django, FastAPI, RESTful APIs
-* **Frontend:** HTML5, CSS3, JavaScript (Responsive UI)
-* **AI & Machine Learning:** Groq API, Google AI Studio, Azure ML Studio, Computer Vision (Caffe)
-* **Developer Tools & Version Control:** Git, GitHub, Docker, Vercel
-
----
-
-## 🚀 Featured Projects
-
-1. **AI Study Assistant** – Smart educational assistant powered by advanced LLM workflows.
-2. **AI Agentic Dev** – Autonomous agentic workflows designed for software developers.
-3. **PAK Job Finder** – Job portal application hosted on Hugging Face Spaces.
-4. **Mahnoor AI** – Custom conversational AI application workspace.
-5. **Language Translator** – Real-time language translation web utility.
-6. **AI Object Detection** – Computer vision model integration using Caffe and Python.
+</div>
 
 ---
 
-## 📊 GitHub & Problem Solving Stats
+## 💻 About Me
+* 🎓 **Education:** BSIT 6th Semester Student at Virtual University of Pakistan (VU).
+* 💼 **Current Roles:** Backend Developer at **NexeAgent** & Technical Director at **WICS** (Women in Computer Science).
+* 🏆 **Achievements:** HEC GenAI Top Performer (96.08%) & AI Seekho Silver Tier Swag Winner.
+* 🎯 **Goal:** Passionate about architecting robust server-side systems, integrating advanced LLM workflows, and building real-world AI applications.
 
-* **GitHub Consistency:** Integrated live contribution activity graph.
-* **LeetCode Progress:** Regular algorithmic problem-solving practice focused on Data Structures & Algorithms (DSA).
+---
+
+## 🛠️ Core Tech Stack & Skills
+
+| Category | Technologies & Tools |
+| :--- | :--- |
+| **Languages** | Python, JavaScript, Java, C++ |
+| **Backend & APIs** | Django, FastAPI, RESTful APIs, Database Management |
+| **AI & GenAI** | Groq API, Google AI Studio, Azure ML Studio, Computer Vision (Caffe) |
+| **Frontend** | HTML5, CSS3, JavaScript, React |
+| **DevOps & Tools** | Git, GitHub, Docker, Vercel |
 
 ---
 
-## 📬 Get In Touch
+## 🚀 Featured Projects & Live Apps
 
-* **LinkedIn:** [Mahnoor Fatima](https://www.linkedin.com/in/mahnoor-fatima-529b91301/)
-* **GitHub:** [@Mahnoor-fatima249](https://github.com/Mahnoor-fatima249)
-* **Instagram:** [@mahnoor_backend](https://www.instagram.com/mahnoor_backend)
+| Project Name | Description | Links |
+| :--- | :--- | :--- |
+| **AI Study Assistant** | Smart educational assistant powered by advanced LLM workflows. | [![GitHub Repo](https://img.shields.io/badge/GitHub-View_Repo-black?style=flat-square&logo=github)](https://github.com/Mahnoor-fatima249/AI_Study_Assistant) |
+| **AI Agentic Dev** | Autonomous agentic workflows designed for software developers. | [![GitHub Repo](https://img.shields.io/badge/GitHub-View_Repo-black?style=flat-square&logo=github)](https://github.com/Mahnoor-fatima249/ai-agentic-Developer) |
+| **PAK Job Finder** | Job portal web application. | [![Live App](https://img.shields.io/badge/HuggingFace-Live_App-yellow?style=flat-square&logo=huggingface)](https://huggingface.co/spaces/bc230425989/pak_job) |
+| **Mahnoor AI** | Custom conversational AI application workspace. | [![Live App](https://img.shields.io/badge/HuggingFace-Live_App-yellow?style=flat-square&logo=huggingface)](https://huggingface.co/spaces/bc230425989/Mahnoor-AI) |
+| **Language Translator** | Real-time language translation web utility. | [![Live App](https://img.shields.io/badge/HuggingFace-Live_App-yellow?style=flat-square&logo=huggingface)](https://huggingface.co/spaces/bc230425989/Language-translator) |
+| **AI Object Detection** | Computer vision model integration using Caffe & Python. | [![GitHub Repo](https://img.shields.io/badge/GitHub-View_Repo-black?style=flat-square&logo=github)](https://github.com/Mahnoor-fatima249/AI-Object-Detection-Caffe) |
 
 ---
-*© 2026 Mahnoor Fatima. Built with passion and code.*
+
+## 📊 GitHub Contribution & Stats
+
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Mahnoor-fatima249&theme=react-dark&hide_border=true&area=true" alt="GitHub Activity Graph" width="100%"/>
+</div>
+
+---
+<div align="center">
+  <i>© 2026 Mahnoor Fatima. Built with passion and code.</i>
+</div>
