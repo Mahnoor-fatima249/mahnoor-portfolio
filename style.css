@@ -452,16 +452,95 @@ nav.scrolled {
     font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--text-primary);
 }
 
+.brand-text {
+    transition: opacity 0.3s ease;
+}
+
+/* ============================================
+    MF STYLISH LOGO
+    ============================================ */
+.mf-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: -1px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px var(--accent-glow-strong);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mf-logo::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+    animation: mfShine 3s ease-in-out infinite;
+}
+
+@keyframes mfShine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.mf-logo:hover {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 4px 20px var(--accent-glow-strong);
+}
+
+.mf-logo span:first-child {
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.mf-logo span:last-child {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.8rem;
+    margin-left: -1px;
+}
+
+.mf-logo-sm {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+    border-radius: 8px;
+}
+
+.mf-logo-sm span:first-child { font-size: 0.85rem; }
+.mf-logo-sm span:last-child { font-size: 0.7rem; }
+
+/* Welcome screen MF logo */
+.mf-logo-lg {
+    width: 70px;
+    height: 70px;
+    font-size: 1.5rem;
+    border-radius: 18px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 25px var(--accent-glow-strong);
+}
+
+.mf-logo-lg span:first-child { font-size: 1.6rem; }
+.mf-logo-lg span:last-child { font-size: 1.3rem; }
+
 .brand-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin: 0 2px;
+    display: none;
 }
 
 .nav-links {
@@ -2240,11 +2319,14 @@ section.section-active .section-badge {
         width: 100%;
         height: 100vh;
         background: var(--bg-card);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 16px;
+        gap: 12px;
         z-index: 1000;
+        padding: 20px;
     }
 
     .nav-links.active { display: flex; }
@@ -2276,10 +2358,83 @@ section.section-active .section-badge {
 }
 
 @media (max-width: 480px) {
-    .hero-title { font-size: 1.6rem; }
-    .welcome-card { padding: 35px 20px; }
-    .welcome-name { font-size: 1.5rem; }
-    .welcome-stats-row { gap: 12px; }
-    .stats-container { padding: 20px !important; }
-}
+    .hero-container { margin: 70px 3% 15px; padding: 25px 16px; }
+    .hero-title { font-size: 1.5rem; }
+    .hero-desc { font-size: 0.88rem; }
+    .tagline { font-size: 0.95rem; }
+    .hero-highlights { flex-wrap: wrap; gap: 6px; }
+    .highlight-chip { font-size: 0.75rem; padding: 6px 10px; }
+    .hero-actions { flex-direction: column; gap: 10px; }
+    .hero-actions .action-btn { width: 100%; justify-content: center; }
+    .hero-social-links { gap: 12px; }
+
+    .welcome-card { padding: 30px 18px; }
+    .welcome-name { font-size: 1.4rem; }
+    .welcome-subtitle { font-size: 0.8rem; }
+    .welcome-stats-row { gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .welcome-stat-num { font-size: 1.3rem; }
+    .welcome-stat-label { font-size: 0.7rem; }
+    .welcome-socials { gap: 12px; }
+
+    .container { margin: 12px 3%; padding: 20px 14px; }
+    .container h2 { font-size: 1.2rem; }
+
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .stat-box { padding: 16px 10px; }
+    .stat-icon { width: 38px; height: 38px; font-size: 0.9rem; }
+    .stat-box h3 { font-size: 1.3rem; }
+    .stat-box p { font-size: 0.75rem; }
+
+    .services-grid { grid-template-columns: 1fr; gap: 12px; }
+    .service-card { padding: 20px 16px; }
+    .service-icon-wrap { width: 44px; height: 44px; font-size: 1rem; }
+
+    .project-grid { grid-template-columns: 1fr; gap: 12px; }
+    .project-card { padding: 20px 16px; }
+
+    .skills-grid { gap: 8px; }
+    .skill-tag { padding: 8px 12px; font-size: 0.8rem; }
+    .skill-rings-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .skill-ring-item svg { width: 60px; height: 60px; }
+    .skill-ring-label { font-size: 0.65rem; }
+    .skill-ring-percent { font-size: 0.6rem; }
+
+    .timeline-content { padding: 16px; }
+    .timeline-date { font-size: 0.75rem; }
+    .timeline-content h3 { font-size: 0.95rem; }
+
+    .testimonial-grid { grid-template-columns: 1fr; gap: 12px; }
+    .testimonial-card { padding: 20px 16px; }
+
+    .cert-grid { grid-template-columns: 1fr; gap: 12px; }
+    .flip-card { height: 190px; }
+    .flip-card-front { padding: 18px; }
+
+    .achievement-card { padding: 16px; gap: 12px; }
+    .achievement-icon { width: 44px; height: 44px; font-size: 1.1rem; }
+
+    .leetcode-card { padding: 20px 14px; }
+    .lc-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .lc-stat-box { padding: 12px 8px; }
+    .lc-stat-box h4 { font-size: 1.2rem; }
+
+    .contact-form { margin-top: 16px; }
+    .form-group input, .form-group textarea { padding: 11px 14px; font-size: 0.9rem; }
+
+    .mf-logo { width: 34px; height: 34px; border-radius: 9px; }
+    .mf-logo span:first-child { font-size: 0.85rem; }
+    .mf-logo span:last-child { font-size: 0.7rem; }
+    .brand-text { font-size: 1rem; }
+
+    .nav-btn { font-size: 1rem; padding: 10px 20px; }
+
+    footer { padding: 35px 20px; }
+    .footer-brand { font-size: 1.1rem; }
+    .footer-socials a { width: 40px; height: 40px; font-size: 1rem; }
+
+    .wave-divider svg { height: 30px; }
+
+    .section-typing-header { font-size: 1.2rem; }
+
+    .theme-toggle-btn { width: 40px; height: 40px; }
 }
