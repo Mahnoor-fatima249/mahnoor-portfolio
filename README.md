@@ -2,9 +2,18 @@
 
 <br>
 
-<img src="profile.jpeg" alt="Mahnoor Fatima" width="180" style="border-radius: 50%; filter: grayscale(100%);">
+```
+┌─────────────────────────────────────────┐
+│                                         │
+│                                         │
+│           [ MAHNOR FATIMA ]             │
+│                                         │
+│                                         │
+└─────────────────────────────────────────┘
+```
 
-<br>
+<img src="profile.jpeg" alt="Mahnoor Fatima" width="200" style="border-radius: 50%; filter: grayscale(100%);">
+
 <br>
 
 # `MAHNOR FATIMA`
