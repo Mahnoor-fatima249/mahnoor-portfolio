@@ -1,341 +1,466 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahnoor Fatima | Portfolio</title>
-    <!-- Google Fonts Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Mahnoor Fatima | AI & Backend Engineer</title>
+    <meta name="description" content="Mahnoor Fatima - Agentic AI Developer, Backend Engineer & Hackathon Leader. Building production-ready AI products at NexeAgent. 42+ repositories on GitHub.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Animated Background -->
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="bg-particles" id="bgParticles"></div>
+
     <!-- Welcome Screen -->
     <div id="welcome-screen">
+        <div class="welcome-bg-mesh"></div>
         <div class="welcome-card">
-            <span style="font-size: 2.8rem; display: block; margin-bottom: 10px; color: #3b7a8a;">✨</span>
-            <h1>Welcome to <span>Mahnoor's</span> Portfolio</h1>
-            <p>Explore backend engineering projects, AI development workflows, and professional experience.</p>
-            <a href="#about" class="explore-btn" onclick="openPortfolio(event)"><i class="fas fa-arrow-right" style="margin-right: 8px;"></i> Enter Portfolio</a>
+            <div class="welcome-avatar-ring">
+                <img src="profile.jpeg" alt="Mahnoor Fatima" class="welcome-avatar">
+            </div>
+            <div class="welcome-name-role">
+                <h1 class="welcome-name">Mahnoor Fatima</h1>
+                <p class="welcome-role"><span class="typing-text" id="typingText"></span><span class="cursor">|</span></p>
+            </div>
+            <p class="welcome-subtitle">Agentic AI Developer | Backend Engineer | Hackathon Leader</p>
+            <div class="welcome-stats-row">
+                <div class="welcome-stat"><span class="welcome-stat-num">42+</span><span class="welcome-stat-label">Repos</span></div>
+                <div class="welcome-stat-divider"></div>
+                <div class="welcome-stat"><span class="welcome-stat-num">3+</span><span class="welcome-stat-label">Internships</span></div>
+                <div class="welcome-stat-divider"></div>
+                <div class="welcome-stat"><span class="welcome-stat-num">96%</span><span class="welcome-stat-label">HEC Score</span></div>
+            </div>
+            <a href="#about" class="explore-btn" onclick="openPortfolio(event)">
+                <span>Explore Portfolio</span>
+                <i class="fas fa-arrow-down"></i>
+            </a>
+            <div class="welcome-socials">
+                <a href="https://github.com/Mahnoor-fatima249" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/mahnoor-fatima-529b91301/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://leetcode.com/u/JbP00b4yGi/" target="_blank"><i class="fas fa-code"></i></a>
+            </div>
         </div>
     </div>
 
     <!-- Navigation Bar -->
-    <nav>
-        
-        <!-- Hamburger Icon -->
+    <nav id="mainNav">
+        <a href="#about" class="nav-brand">
+            <span class="brand-dot"></span>Mahnoor<span class="brand-dot"></span>
+        </a>
         <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
-
-        <!-- Links Container -->
         <div class="nav-links" id="navLinks">
-            <a href="#about" class="nav-btn" onclick="closeMenu()">About Me</a>
+            <a href="#about" class="nav-btn" onclick="closeMenu()">About</a>
             <a href="#education" class="nav-btn" onclick="closeMenu()">Education</a>
             <a href="#skills" class="nav-btn" onclick="closeMenu()">Skills</a>
             <a href="#services" class="nav-btn" onclick="closeMenu()">Services</a>
             <a href="#experience" class="nav-btn" onclick="closeMenu()">Experience</a>
-            <a href="#projects" class="nav-btn" onclick="closeMenu()">My Work</a>
-            <a href="#github-activity" class="nav-btn" onclick="closeMenu()">GitHub Activity</a>
+            <a href="#projects" class="nav-btn" onclick="closeMenu()">Projects</a>
             <a href="#leetcode" class="nav-btn" onclick="closeMenu()">LeetCode</a>
             <a href="#testimonials" class="nav-btn" onclick="closeMenu()">Testimonials</a>
-            <a href="#colleague-testimonials" class="nav-btn" onclick="closeMenu()">Colleagues</a>
             <a href="#achievements" class="nav-btn" onclick="closeMenu()">Achievements</a>
-            <a href="#certifications" class="nav-btn" onclick="closeMenu()">Certifications</a>
+            <a href="#certifications" class="nav-btn" onclick="closeMenu()">Certs</a>
             <a href="#contact" class="nav-btn" onclick="closeMenu()">Contact</a>
         </div>
-
-        <!-- Theme Toggle Button -->
-        <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+        <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
             <i class="fas fa-moon" id="theme-icon"></i>
         </button>
     </nav>
 
-    <!-- Hero / About Section -->
-    <section id="about" class="hero-container" style="padding-top: 100px;">
+    <!-- Hero Section -->
+    <section id="about" class="hero-container">
+        <div class="hero-glow"></div>
         <div class="hero-content">
-            <div class="hero-text-box">
-                <span class="hero-badge" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a;">✨ Backend & AI Engineer</span>
-                <h1 class="hero-title">Mahnoor Fatima</h1>
-                <p class="tagline">Backend & AI Engineer</p>
-                <p class="hero-desc">I am a BSIT student (6th Semester) at VU Pakistan. Currently serving as a <strong>Backend Developer at NexeAgent</strong> and <strong>Technical Director at WICS</strong>.</p>
-                <div class="bio-grid">
-                    <div class="bio-item"><span>🚀</span> AI/ML Internships (DecodeLabs & TEYZIX CORE)</div>
-                    <div class="bio-item"><span>💡</span> HEC GenAI Top Performer (96.08%)</div>
-                    <div class="bio-item"><span>👑</span> Led Multiple Hackathons as Team Leader</div>
+            <div class="hero-text-box reveal">
+                <span class="hero-badge"><i class="fas fa-code-branch"></i> 42+ GitHub Repos</span>
+                <h1 class="hero-title">Hi, I'm <span class="gradient-text">Mahnoor Fatima</span></h1>
+                <p class="tagline">Agentic AI & Backend Engineer</p>
+                <p class="hero-desc">I build production-ready AI systems and scalable backends. Currently building AI-powered products at <strong>NexeAgent</strong>. BSIT student at VU Pakistan. HEC GenAI Top Performer (96.08%). Technical Director at <strong>WICS</strong>.</p>
+                <div class="hero-highlights">
+                    <div class="highlight-chip"><i class="fas fa-code-branch"></i> 42+ GitHub Repos</div>
+                    <div class="highlight-chip"><i class="fas fa-robot"></i> AI/LLM Engineer</div>
+                    <div class="highlight-chip"><i class="fas fa-trophy"></i> Hackathon Team Lead</div>
+                    <div class="highlight-chip"><i class="fas fa-star"></i> HEC Top Performer</div>
                 </div>
-                <div style="margin-top: 25px;">
-                    <a href="resume.pdf" target="_blank" class="action-btn"><i class="fas fa-download"></i> Download Resume / CV</a>
+                <div class="hero-actions">
+                    <a href="resume.pdf" target="_blank" class="action-btn primary-btn"><i class="fas fa-download"></i> Download Resume</a>
+                    <a href="#contact" class="action-btn outline-btn"><i class="fas fa-envelope"></i> Contact Me</a>
+                </div>
+                <div class="hero-social-links">
+                    <a href="https://github.com/Mahnoor-fatima249" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/mahnoor-fatima-529b91301/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://leetcode.com/u/JbP00b4yGi/" target="_blank" title="LeetCode"><i class="fas fa-code"></i></a>
+                    <a href="https://www.instagram.com/mahnoor_backend" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="hero-image-box">
-                <div class="image-frame" style="border: 4px solid #3b7a8a;">
-                    <img src="profile.jpg" alt="Mahnoor Fatima" class="main-profile-img">
+            <div class="hero-image-box reveal">
+                <div class="image-frame">
+                    <div class="image-ring"></div>
+                    <img src="profile.jpeg" alt="Mahnoor Fatima" class="main-profile-img">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="container stats-container">
+    <section class="container stats-container reveal">
         <div class="stats-grid">
-            <div class="stat-box card">
-                <h3 style="color: #3b7a8a;">6+</h3>
-                <p>Projects Built</p>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fab fa-github"></i></div>
+                <h3 class="counter" data-target="42" data-suffix="+">0</h3>
+                <p>GitHub Repositories</p>
             </div>
-            <div class="stat-box card">
-                <h3 style="color: #3b7a8a;">3+</h3>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-briefcase"></i></div>
+                <h3 class="counter" data-target="3" data-suffix="+">0</h3>
                 <p>AI/Tech Internships</p>
             </div>
-            <div class="stat-box card">
-                <h3 style="color: #3b7a8a;">96.08%</h3>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-award"></i></div>
+                <h3 class="counter" data-target="96" data-suffix=".08%">0</h3>
                 <p>HEC GenAI Score</p>
             </div>
-            <div class="stat-box card">
-                <h3 style="color: #3b7a8a;">2+</h3>
-                <p>Hackathons Led as Team Lead</p>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <h3 class="counter" data-target="2" data-suffix="+">0</h3>
+                <p>Hackathons Led</p>
             </div>
         </div>
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="container">
-        <h2>Education</h2>
+    <section id="education" class="container reveal">
+        <h2><i class="fas fa-graduation-cap" style="color: var(--accent); margin-right: 10px;"></i>Education</h2>
         <div class="timeline">
-            <div class="timeline-item card" style="padding: 20px; border-radius: 12px;">
-                <h3>Bachelor of Science in Information Technology (BSIT)</h3>
-                <p class="company" style="color: #3b7a8a; font-weight: 600;">Virtual University of Pakistan (VU Pakistan)</p>
-                <p class="timeline-desc">6th Semester Student | Focusing on software engineering, database systems, and object-oriented paradigms.</p>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2023 - Present</span>
+                    <h3>Bachelor of Science in Information Technology</h3>
+                    <p class="timeline-company">Virtual University of Pakistan</p>
+                    <p class="timeline-desc">6th Semester Student | Focusing on software engineering, database systems, and object-oriented paradigms.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Tech Stack & Skills Section with Icons -->
-    <section id="skills" class="container">
-        <h2>Core Tech Stack & Skills</h2>
+    <!-- Skills Section -->
+    <section id="skills" class="container reveal">
+        <h2><i class="fas fa-wand-magic-sparkles" style="color: var(--accent); margin-right: 10px;"></i>Core Tech Stack & Skills</h2>
         <div class="skills-grid">
-            <span class="skill-tag"><i class="fab fa-python" style="margin-right: 6px;"></i> Python</span>
-            <span class="skill-tag"><i class="fas fa-layer-group" style="margin-right: 6px;"></i> Django</span>
-            <span class="skill-tag"><i class="fas fa-bolt" style="margin-right: 6px;"></i> FastAPI</span>
-            <span class="skill-tag"><i class="fab fa-js" style="margin-right: 6px;"></i> JavaScript</span>
-            <span class="skill-tag"><i class="fab fa-react" style="margin-right: 6px;"></i> React</span>
-            <span class="skill-tag"><i class="fab fa-java" style="margin-right: 6px;"></i> Java</span>
-            <span class="skill-tag"><i class="fas fa-code" style="margin-right: 6px;"></i> C++</span>
-            <span class="skill-tag"><i class="fas fa-cube" style="margin-right: 6px;"></i> OOP</span>
-            <span class="skill-tag"><i class="fas fa-sitemap" style="margin-right: 6px;"></i> DSA</span>
-            <span class="skill-tag"><i class="fas fa-network-wired" style="margin-right: 6px;"></i> RESTful APIs</span>
-            <span class="skill-tag"><i class="fas fa-eye" style="margin-right: 6px;"></i> Computer Vision</span>
-            <span class="skill-tag"><i class="fas fa-brain" style="margin-right: 6px;"></i> AI / GenAI APIs</span>
-            <span class="skill-tag"><i class="fas fa-microchip" style="margin-right: 6px;"></i> Groq API</span>
-            <span class="skill-tag"><i class="fas fa-robot" style="margin-right: 6px;"></i> Google AI Studio</span>
-            <span class="skill-tag"><i class="fas fa-cloud" style="margin-right: 6px;"></i> Azure ML Studio</span>
-            <span class="skill-tag"><i class="fab fa-docker" style="margin-right: 6px;"></i> Docker</span>
-            <span class="skill-tag"><i class="fab fa-git-alt" style="margin-right: 6px;"></i> Git & GitHub</span>
+            <div class="skill-tag"><i class="fab fa-python"></i><span>Python</span></div>
+            <div class="skill-tag"><i class="fas fa-layer-group"></i><span>Django</span></div>
+            <div class="skill-tag"><i class="fas fa-bolt"></i><span>FastAPI</span></div>
+            <div class="skill-tag"><i class="fab fa-js"></i><span>JavaScript</span></div>
+            <div class="skill-tag"><i class="fab fa-react"></i><span>React</span></div>
+            <div class="skill-tag"><i class="fab fa-java"></i><span>Java</span></div>
+            <div class="skill-tag"><i class="fas fa-code"></i><span>C++</span></div>
+            <div class="skill-tag"><i class="fas fa-cube"></i><span>OOP</span></div>
+            <div class="skill-tag"><i class="fas fa-sitemap"></i><span>DSA</span></div>
+            <div class="skill-tag"><i class="fas fa-network-wired"></i><span>RESTful APIs</span></div>
+            <div class="skill-tag"><i class="fas fa-eye"></i><span>Computer Vision</span></div>
+            <div class="skill-tag"><i class="fas fa-brain"></i><span>AI / GenAI</span></div>
+            <div class="skill-tag"><i class="fas fa-microchip"></i><span>Groq API</span></div>
+            <div class="skill-tag"><i class="fas fa-robot"></i><span>Google AI Studio</span></div>
+            <div class="skill-tag"><i class="fas fa-cloud"></i><span>Azure ML</span></div>
+            <div class="skill-tag"><i class="fab fa-docker"></i><span>Docker</span></div>
+            <div class="skill-tag"><i class="fab fa-git-alt"></i><span>Git & GitHub</span></div>
         </div>
-
-        <h3 style="margin-top: 30px; font-size: 1.2rem;">Soft Skills & Languages</h3>
-        <div class="skills-grid" style="margin-top: 10px;">
-            <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);"><i class="fas fa-users" style="margin-right: 6px;"></i> Team Leadership</span>
-            <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);"><i class="fas fa-lightbulb" style="margin-right: 6px;"></i> Problem Solving</span>
-            <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);"><i class="fas fa-comments" style="margin-right: 6px;"></i> Communication</span>
-            <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);">Urdu (Native)</span>
-            <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);">English (Professional)</span>
+        <h3 class="skills-subtitle">Soft Skills & Languages</h3>
+        <div class="skills-grid soft-skills">
+            <div class="skill-tag soft"><i class="fas fa-users"></i><span>Team Leadership</span></div>
+            <div class="skill-tag soft"><i class="fas fa-lightbulb"></i><span>Problem Solving</span></div>
+            <div class="skill-tag soft"><i class="fas fa-comments"></i><span>Communication</span></div>
+            <div class="skill-tag soft"><span>Urdu (Native)</span></div>
+            <div class="skill-tag soft"><span>English (Professional)</span></div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="container">
-        <h2>What I Do & Services</h2>
+    <section id="services" class="container reveal">
+        <h2><i class="fas fa-cubes" style="color: var(--accent); margin-right: 10px;"></i>What I Do</h2>
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-server"></i></div>
+                <div class="service-icon-wrap"><i class="fas fa-server"></i></div>
                 <h3>Backend Development</h3>
                 <p>Building secure, scalable, and high-performance server-side architectures, business logic, and database management systems.</p>
+                <div class="service-tools">
+                    <span>Django</span><span>FastAPI</span><span>Python</span><span>PostgreSQL</span>
+                </div>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-brain"></i></div>
-                <h3>AI & GenAI Solutions</h3>
-                <p>Integrating advanced LLM workflows, custom AI agents, computer vision models, and state-of-the-art AI developer APIs.</p>
+                <div class="service-icon-wrap"><i class="fas fa-brain"></i></div>
+                <h3>Agentic AI & LLM Systems</h3>
+                <p>Building autonomous AI agents, RAG pipelines, LLM-powered applications, and production-ready GenAI solutions.</p>
+                <div class="service-tools">
+                    <span>Groq</span><span>Google AI</span><span>Azure ML</span><span>RAG</span>
+                </div>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+                <div class="service-icon-wrap"><i class="fas fa-network-wired"></i></div>
                 <h3>RESTful APIs & Integration</h3>
-                <p>Designing, building, and connecting robust APIs to ensure smooth communication between frontend web applications and backend servers.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- GitHub Activity Graph Section -->
-    <section id="github-activity" class="container">
-        <h2>GitHub Contribution Activity</h2>
-        <p style="font-size: 0.95rem; margin-bottom: 20px;">A visual overview of my daily coding consistency and open-source contributions.</p>
-        <div class="card" style="padding: 20px; border-radius: 16px; text-align: center; overflow-x: auto;">
-            <!-- GitHub Stats / Contribution Graph Widget -->
-            <img src="https://github-readme-activity-graph.vercel.app/graph?username=Mahnoor-fatima249&theme=react-dark&hide_border=true&area=true" alt="Mahnoor's GitHub Activity Graph" style="max-width: 100%; height: auto; border-radius: 12px;">
-        </div>
-    </section>
-
-    <!-- LeetCode Progress Section -->
-    <section id="leetcode" class="container">
-        <h2>Problem Solving & LeetCode Progress</h2>
-        <div class="leetcode-card">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
-                <div>
-                    <h3 style="font-size: 1.4rem;"><i class="fas fa-code" style="color: #ffa116;"></i> Algorithmic Problem Solving</h3>
-                    <p style="font-size: 0.95rem; margin-top: 5px;">Consistent practice on LeetCode focusing on data structures and advanced coding concepts.</p>
-                </div>
-                <a href="https://leetcode.com/u/JbP00b4yGi/" target="_blank" class="action-btn" style="background: #ffa116; color: #fff;"><i class="fas fa-external-link-alt"></i> Visit LeetCode Profile</a>
-            </div>
-
-            <div class="lc-stats-grid">
-                <div class="lc-stat-box">
-                    <h4>13</h4>
-                    <p style="font-size: 0.85rem; font-weight: 600;">Total Solved</p>
-                </div>
-                <div class="lc-stat-box">
-                    <h4 style="color: #2ecc71;">5</h4>
-                    <p style="font-size: 0.85rem; font-weight: 600;">Easy</p>
-                </div>
-                <div class="lc-stat-box">
-                    <h4 style="color: #f39c12;">3</h4>
-                    <p style="font-size: 0.85rem; font-weight: 600;">Medium</p>
-                </div>
-                <div class="lc-stat-box">
-                    <h4 style="color: #e74c3c;">5</h4>
-                    <p style="font-size: 0.85rem; font-weight: 600;">Hard</p>
-                </div>
-                <div class="lc-stat-box">
-                    <h4 style="color: #3498db;">93.3%</h4>
-                    <p style="font-size: 0.85rem; font-weight: 600;">Acceptance Rate</p>
-                </div>
-            </div>
-
-            <div style="margin-top: 20px;">
-                <p style="font-size: 0.9rem; font-weight: 600; margin-bottom: 8px;">Key Topics Covered:</p>
-                <div class="lc-tags">
-                    <span class="lc-tag">Dynamic Programming</span>
-                    <span class="lc-tag">Tree / Binary Tree</span>
-                    <span class="lc-tag">Depth-First Search (DFS)</span>
-                    <span class="lc-tag">Two Pointers</span>
-                    <span class="lc-tag">Database</span>
-                    <span class="lc-tag">Sliding Window</span>
-                    <span class="lc-tag">Greedy</span>
-                    <span class="lc-tag">Sorting & Hash Table</span>
+                <p>Designing, building, and connecting robust APIs to ensure smooth communication between frontend and backend systems.</p>
+                <div class="service-tools">
+                    <span>REST</span><span>JSON</span><span>Docker</span><span>Git</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Timeline Section -->
-    <section id="experience" class="container">
-        <h2>Professional Experience & Leadership</h2>
+    <!-- Experience Section -->
+    <section id="experience" class="container reveal">
+        <h2><i class="fas fa-briefcase" style="color: var(--accent); margin-right: 10px;"></i>Professional Experience</h2>
         <div class="timeline">
-            <div class="timeline-item card" style="padding: 20px; border-radius: 12px;">
-                <h3>Backend Developer</h3>
-                <p class="company" style="color: #3b7a8a; font-weight: 600;">NexeAgent</p>
-                <p class="timeline-desc">Building scalable backend frameworks, system architectures, and workflow automation solutions.</p>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Current</span>
+                    <h3>Backend Developer</h3>
+                    <p class="timeline-company">NexeAgent</p>
+                    <p class="timeline-desc">Developing AI-powered backend systems, building FastAPI APIs, integrating LLMs, and creating intelligent automation for production-ready AI applications.</p>
+                </div>
             </div>
-            <div class="timeline-item card" style="padding: 20px; border-radius: 12px;">
-                <h3>Technical Director</h3>
-                <p class="company" style="color: #3b7a8a; font-weight: 600;">Women in Computer Science (WICS)</p>
-                <p class="timeline-desc">Leading technical initiatives, coding cohorts, and community skill-building programs.</p>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Current</span>
+                    <h3>Technical Director</h3>
+                    <p class="timeline-company">Women in Computer Science (WICS)</p>
+                    <p class="timeline-desc">Leading technical initiatives, coding cohorts, and community skill-building programs.</p>
+                </div>
             </div>
-            <div class="timeline-item card" style="padding: 20px; border-radius: 12px;">
-                <h3>Team Lead & Hackathon Participant</h3>
-                <p class="company" style="color: #3b7a8a; font-weight: 600;">National Hackathons (AI Seekho & Others)</p>
-                <p class="timeline-desc">Successfully led technical teams as a Team Lead in competitive hackathons, managing project workflows and execution.</p>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2026</span>
+                    <h3>Team Lead & Hackathon Participant</h3>
+                    <p class="timeline-company">National Hackathons (AI Seekho & Others)</p>
+                    <p class="timeline-desc">Led technical teams as a Team Lead in competitive hackathons, managing project workflows and execution.</p>
+                </div>
             </div>
-            <div class="timeline-item card" style="padding: 20px; border-radius: 12px;">
-                <h3>Full-Stack & AI Intern</h3>
-                <p class="company" style="color: #3b7a8a; font-weight: 600;">TEYZIX CORE & DecodeLabs</p>
-                <p class="timeline-desc">Completed full-stack development tasks and machine learning model integrations successfully.</p>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2025</span>
+                    <h3>Full-Stack & AI Intern</h3>
+                    <p class="timeline-company">TEYZIX CORE & DecodeLabs</p>
+                    <p class="timeline-desc">Completed full-stack development tasks and machine learning model integrations successfully.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="container">
-        <h2>My Projects & Live Demos</h2>
+    <section id="projects" class="container reveal">
+        <h2><i class="fas fa-rocket" style="color: var(--accent); margin-right: 10px;"></i>My Projects</h2>
         <div class="project-grid">
-            <div class="card" style="padding: 20px; border-radius: 16px;">
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/Mahnoor-fatima249/AI_Study_Assistant" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
                 <h3>AI Study Assistant</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 10px;">Smart educational assistant powered by LLM workflows.</p>
-                <div class="video-demo-box" title="Project Demo Preview">
-                    <i class="fas fa-play-circle"></i>
-                </div>
-                <div style="margin-top: 15px;">
-                    <a href="https://github.com/Mahnoor-fatima249/AI_Study_Assistant" target="_blank" class="action-btn">GitHub Repository</a>
+                <p>Smart educational assistant powered by LLM workflows for personalized learning.</p>
+                <div class="project-tags">
+                    <span>Python</span><span>LLM</span><span>FastAPI</span>
                 </div>
             </div>
-            <div class="card" style="padding: 20px; border-radius: 16px;">
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-icon"><i class="fas fa-robot"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/Mahnoor-fatima249/ai-agentic-Developer" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
                 <h3>AI Agentic Dev</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 10px;">Autonomous agentic workflows for software developers.</p>
-                <div class="video-demo-box" title="Project Demo Preview">
-                    <i class="fas fa-play-circle"></i>
-                </div>
-                <div style="margin-top: 15px;">
-                    <a href="https://github.com/Mahnoor-fatima249/ai-agentic-Developer" target="_blank" class="action-btn">GitHub Repository</a>
+                <p>Autonomous agentic workflows for software developers using GenAI APIs.</p>
+                <div class="project-tags">
+                    <span>AI Agents</span><span>GenAI</span><span>Python</span>
                 </div>
             </div>
-            <div class="card" style="padding: 20px; border-radius: 16px;">
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-icon"><i class="fas fa-eye"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/Mahnoor-fatima249/AI-Object-Detection-Caffe" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
                 <h3>Object Detection</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 10px;">Computer Vision model integration using Caffe & Python.</p>
-                <div style="margin-top: 15px;">
-                    <a href="https://github.com/Mahnoor-fatima249/AI-Object-Detection-Caffe" target="_blank" class="action-btn">GitHub Repository</a>
+                <p>Computer Vision model integration using Caffe framework & Python.</p>
+                <div class="project-tags">
+                    <span>OpenCV</span><span>Caffe</span><span>Python</span>
                 </div>
             </div>
-            <div class="card" style="padding: 20px; border-radius: 16px;">
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="project-links">
+                        <a href="https://huggingface.co/spaces/bc230425989/pak_job" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
                 <h3>PAK Job Finder</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 10px;">Job portal application hosted on Hugging Face Spaces.</p>
-                <div style="margin-top: 15px;">
-                    <a href="https://huggingface.co/spaces/bc230425989/pak_job" target="_blank" class="action-btn">Live App</a>
+                <p>Job portal application hosted on Hugging Face Spaces.</p>
+                <div class="project-tags">
+                    <span>Django</span><span>React</span><span>HF Spaces</span>
                 </div>
             </div>
-            <div class="card" style="padding: 20px; border-radius: 16px;">
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-icon"><i class="fas fa-message"></i></div>
+                    <div class="project-links">
+                        <a href="https://huggingface.co/spaces/bc230425989/Mahnoor-AI" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
                 <h3>Mahnoor AI</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 10px;">Custom conversational AI application workspace.</p>
-                <div style="margin-top: 15px;">
-                    <a href="https://huggingface.co/spaces/bc230425989/Mahnoor-AI" target="_blank" class="action-btn">Live App</a>
+                <p>Custom conversational AI application workspace.</p>
+                <div class="project-tags">
+                    <span>Groq</span><span>Python</span><span>Streamlit</span>
                 </div>
             </div>
-            <div class="card" style="padding: 20px; border-radius: 16px;">
-                <h3>Language Translator</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 10px;">Real-time language translation web utility.</p>
-                <div style="margin-top: 15px;">
-                    <a href="https://huggingface.co/spaces/bc230425989/Language-translator" target="_blank" class="action-btn">Live App</a>
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-icon"><i class="fas fa-newspaper"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/Mahnoor-fatima249" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3>AI News Platform</h3>
+                <p>AI-powered news application with intelligent summaries and conversational news experiences.</p>
+                <div class="project-tags">
+                    <span>FastAPI</span><span>MongoDB</span><span>React</span><span>Groq</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-icon"><i class="fas fa-comments"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/Mahnoor-fatima249/ai-debate-backend" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3>AI Debate Backend</h3>
+                <p>Backend APIs for AI-powered debates with LLM integration.</p>
+                <div class="project-tags">
+                    <span>Python</span><span>FastAPI</span><span>LLM</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-icon"><i class="fas fa-cloud-sun"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/Mahnoor-fatima249" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3>Live Weather System</h3>
+                <p>Real-time weather application providing live forecasts through external APIs.</p>
+                <div class="project-tags">
+                    <span>Python</span><span>REST API</span><span>JSON</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="container">
-        <h2>Recommendations & Feedback</h2>
-        <div class="cert-grid">
-            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
-                <h3>TEYZIX CORE (Internship Evaluation)</h3>
-                <p style="margin-top: 10px; margin-bottom: 15px;">"Mahnoor demonstrated exceptional dedication, technical execution, and problem-solving capabilities during her Full-Stack Web Development internship. Outstanding performance on core project tasks!"</p>
-                <a href="certificates/teyzix-LOR.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View LOR Document</a>
+    <!-- LeetCode Section -->
+    <section id="leetcode" class="container reveal">
+        <h2><i class="fas fa-code" style="color: var(--accent); margin-right: 10px;"></i>LeetCode Progress</h2>
+        <div class="leetcode-card">
+            <div class="leetcode-header">
+                <div>
+                    <h3>Algorithmic Problem Solving</h3>
+                    <p>Consistent practice focusing on data structures and advanced coding concepts.</p>
+                </div>
+                <a href="https://leetcode.com/u/JbP00b4yGi/" target="_blank" class="action-btn lc-btn"><i class="fas fa-external-link-alt"></i> Profile</a>
+            </div>
+            <div class="lc-stats-grid">
+                <div class="lc-stat-box total"><h4 class="counter" data-target="76" data-suffix="">0</h4><p>Total Solved</p></div>
+                <div class="lc-stat-box easy"><h4>16</h4><p>Easy / 961</p></div>
+                <div class="lc-stat-box medium"><h4>25</h4><p>Medium / 2105</p></div>
+                <div class="lc-stat-box hard"><h4>35</h4><p>Hard / 967</p></div>
+                <div class="lc-stat-box rate"><h4>93.3%</h4><p>Acceptance</p></div>
+            </div>
+            <div class="lc-topics">
+                <p class="lc-topics-title">Key Topics:</p>
+                <div class="lc-tags">
+                    <span class="lc-tag">Dynamic Programming</span>
+                    <span class="lc-tag">Binary Tree</span>
+                    <span class="lc-tag">DFS</span>
+                    <span class="lc-tag">Two Pointers</span>
+                    <span class="lc-tag">Database</span>
+                    <span class="lc-tag">Sliding Window</span>
+                    <span class="lc-tag">Greedy</span>
+                    <span class="lc-tag">Hash Table</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Colleague & Hackathon Testimonials Section -->
-    <section id="colleague-testimonials" class="container">
-        <h2>Hackathon & Colleague Testimonials</h2>
-        <div class="cert-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
-                <h3>Rana Abdullah</h3>
-                <p style="font-style: italic; margin-top: 10px; margin-bottom: 15px;">"Great to work with Mahnoor. Fast delivery, clean code, and zero issues. Would definitely hire again."</p>
-                <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);">Hackathon Collaborator</span>
+    <!-- Testimonials -->
+    <section id="testimonials" class="container reveal">
+        <h2><i class="fas fa-quote-left" style="color: var(--accent); margin-right: 10px;"></i>Recommendations</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                <p>"Mahnoor demonstrated exceptional dedication, technical execution, and problem-solving capabilities during her Full-Stack Web Development internship. Outstanding performance on core project tasks!"</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar"><i class="fas fa-building"></i></div>
+                    <div>
+                        <h4>TEYZIX CORE</h4>
+                        <span>Internship Evaluation</span>
+                    </div>
+                </div>
+                <a href="certificates/teyzix-LOR.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View LOR</a>
             </div>
-            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
-                <h3>Muhammad Maooz Khan</h3>
-                <p style="font-style: italic; margin-top: 10px; margin-bottom: 15px;">"Strong leadership excellent communication and a highly supportive approach Consistently delivers quality work promotes great teamwork and maintains a positive attitude that creates an excellent team environment"</p>
-                <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);">Hackathon Collaborator</span>
+            <div class="testimonial-card">
+                <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                <p>"Great to work with Mahnoor. Fast delivery, clean code, and zero issues. Would definitely hire again."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+                    <div>
+                        <h4>Rana Abdullah</h4>
+                        <span>Hackathon Collaborator</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                <p>"Strong leadership, excellent communication and a highly supportive approach. Consistently delivers quality work and maintains a positive attitude that creates an excellent team environment."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+                    <div>
+                        <h4>Muhammad Maooz Khan</h4>
+                        <span>Hackathon Collaborator</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                <p>"It was a great experience working with Mahnoor. She was an excellent project team leader, supportive, well-organized, and always motivated the team."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+                    <div>
+                        <h4>Lokesh Kumar</h4>
+                        <span>Hackathon Collaborator</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                <p>"She demonstrates exceptional talent and a strong work ethic, consistently achieving her goals in an impressively short timeframe. Her hard work and rapid growth are truly remarkable."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <div>
+                        <h4>Maria Khalid</h4>
+                        <span>College Instructor</span>
+                    </div>
+                </div>
             </div>
              <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
                 <h3>Lokesh Kumar</h3>
@@ -352,90 +477,136 @@
         </div>
     </section>
 
-    <!-- Achievements Section -->
-    <section id="achievements" class="container">
-        <h2>Achievements & Awards</h2>
-        <div class="cert-grid">
-            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
-                <h3>AI Seekho 2026</h3>
-                <p style="margin-top: 10px; margin-bottom: 15px;">Silver Tier Swag Package Winner (#VibeKaregaPakistan) - Team Lead</p>
-                <a href="Awards/aiseekho-silver.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-image"></i> View Achievement Image</a>
+    <!-- Colleague Testimonials - merged into testimonials above -->
+
+    <!-- Achievements -->
+    <section id="achievements" class="container reveal">
+        <h2><i class="fas fa-trophy" style="color: var(--accent); margin-right: 10px;"></i>Achievements & Awards</h2>
+        <div class="achievement-grid">
+            <div class="achievement-card">
+                <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+                <div class="achievement-content">
+                    <h3>AI Seekho 2026 - Silver Tier Winner</h3>
+                    <p>#VibeKaregaPakistan | Team Lead</p>
+                </div>
+                <a href="Awards/aiseekho-silver.jpg" target="_blank" class="cert-btn"><i class="fas fa-image"></i> View</a>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon" style="background: linear-gradient(135deg, #0288d1, #0ea5e9);"><i class="fas fa-ranking-star"></i></div>
+                <div class="achievement-content">
+                    <h3>DYLP Hackathon - Top 30 (26th Position)</h3>
+                    <p>2nd Hackathon | National Level | Team Lead</p>
+                </div>
+                <a href="certificates/DYLP Certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-image"></i> View</a>
             </div>
         </div>
     </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="container">
-        <h2>Certifications</h2>
+    <!-- Certifications -->
+    <section id="certifications" class="container reveal">
+        <h2><i class="fas fa-certificate" style="color: var(--accent); margin-right: 10px;"></i>Certifications</h2>
         <div class="cert-grid">
-            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+            <div class="cert-card">
+                <div class="cert-badge"><i class="fas fa-award"></i></div>
                 <h3>Generative AI Developer</h3>
-                <p style="margin: 10px 0 15px;">NCEAC - HEC Training (Top Performer)</p>
-                <a href="certificates/hec-certificate.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                <p>NCEAC - HEC Training (Top Performer)</p>
+                <a href="certificates/hec-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
             </div>
-            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+            <div class="cert-card">
+                <div class="cert-badge"><i class="fas fa-award"></i></div>
                 <h3>Aspire Leaders Program</h3>
-                <p style="margin: 10px 0 15px;">2026 Cohort (Harvard Affiliated)</p>
-                <a href="certificates/aspire-certificatefront.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                <p>2026 Cohort (Harvard Affiliated)</p>
+                <a href="certificates/aspire-certificatefront.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
             </div>
-            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+            <div class="cert-card">
+                <div class="cert-badge"><i class="fas fa-award"></i></div>
                 <h3>Aspire Leaders Program</h3>
-                <p style="margin: 10px 0 15px;">2026 Cohort (Harvard Affiliated)</p>
-                <a href="certificates/aspire-certificateback.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                <p>2026 Cohort - Back</p>
+                <a href="certificates/aspire-certificateback.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
             </div>
-            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+            <div class="cert-card">
+                <div class="cert-badge"><i class="fas fa-award"></i></div>
                 <h3>Full Stack Web Dev</h3>
-                <p style="margin: 10px 0 15px;">TEYZIX CORE Internship</p>
-                <a href="certificates/teyzix-certificate.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                <p>TEYZIX CORE Internship</p>
+                <a href="certificates/teyzix-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
             </div>
-            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
-                <h3>Full Stack Web Dev</h3>
-                <p style="margin: 10px 0 15px;">TEYZIX CORE Internship</p>
-                <a href="certificates/teyzix-LOR.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View LOR</a>
+            <div class="cert-card">
+                <div class="cert-badge"><i class="fas fa-award"></i></div>
+                <h3>Full Stack Web Dev - LOR</h3>
+                <p>TEYZIX CORE Internship</p>
+                <a href="certificates/teyzix-LOR.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
             </div>
-            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+            <div class="cert-card">
+                <div class="cert-badge"><i class="fas fa-award"></i></div>
                 <h3>AI & Automation</h3>
-                <p style="margin: 10px 0 15px;">Nexe-Agent Internship</p>
-                <a href="certificates/nexe-certificate.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                <p>Nexe-Agent Internship</p>
+                <a href="certificates/nexe-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
             </div>
-            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+            <div class="cert-card">
+                <div class="cert-badge"><i class="fas fa-award"></i></div>
                 <h3>AI Internship</h3>
-                <p style="margin: 10px 0 15px;">DecodeLabs Virtual Program</p>
-                <a href="certificates/decodelabs-certificate.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                <p>DecodeLabs Virtual Program</p>
+                <a href="certificates/decodelabs-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
             </div>
-            <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
+            <div class="cert-card">
+                <div class="cert-badge"><i class="fas fa-award"></i></div>
+                <h3>DYLP Hackathon</h3>
+                <p>Top 30 (26th Position) - National Level</p>
+                <a href="certificates/DYLP Certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
+            </div>
+            <div class="cert-card">
+                <div class="cert-badge"><i class="fas fa-award"></i></div>
                 <h3>AI Seekho 2026</h3>
-                <p style="margin: 10px 0 15px;">National Hackathon Participant</p>
-                <a href="certificates/aiseekho-certificate.jpg" target="_blank" class="cert-btn action-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                <p>National Hackathon Participant</p>
+                <a href="certificates/aiseekho-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section id="contact" class="container">
-        <h2>Get In Touch</h2>
-        <p style="text-align: center; margin-bottom: 20px;">Have a project in mind or want to collaborate? Drop a message directly to my Gmail!</p>
-        
-        <form class="contact-form card" action="https://formspree.io/f/xrenkkbz" method="POST" style="padding: 30px; border-radius: 16px; max-width: 600px; margin: 0 auto;">
-            <div class="form-group" style="margin-bottom: 15px;">
-                <input type="text" name="name" placeholder="Your Name" required class="form-input" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-dark);">
+    <!-- Contact Section -->
+    <section id="contact" class="container reveal">
+        <h2><i class="fas fa-envelope" style="color: var(--accent); margin-right: 10px;"></i>Get In Touch</h2>
+        <p class="section-subtitle">Have a project in mind or want to collaborate? Drop a message!</p>
+        <form class="contact-form" action="https://formspree.io/f/xrenkkbz" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="email" name="_replyto" placeholder="your@email.com" required>
+                </div>
             </div>
-            <div class="form-group" style="margin-bottom: 15px;">
-                <input type="email" name="_replyto" placeholder="Your Email" required class="form-input" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-dark);">
+            <div class="form-group">
+                <label for="message"><i class="fas fa-comment"></i> Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
             </div>
-            <div class="form-group" style="margin-bottom: 15px;">
-                <textarea name="message" rows="5" placeholder="Your Message" required class="form-input" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-dark);"></textarea>
-            </div>
-            <button type="submit" class="action-btn submit-btn" style="width: 100%;">Send Message to Gmail</button>
+            <button type="submit" class="action-btn primary-btn submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
         </form>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <a href="https://www.linkedin.com/in/mahnoor-fatima-529b91301/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/Mahnoor-fatima249" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.instagram.com/mahnoor_backend?utm_source=qr&igsh=cTc5aG5leGdrbmh6" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/share/1BV42TwagL/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="brand-dot"></span>Mahnoor<span class="brand-dot"></span>
+            </div>
+            <p class="footer-tagline">Building AI-Powered Products</p>
+            <div class="footer-socials">
+                <a href="https://github.com/Mahnoor-fatima249" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/mahnoor-fatima-529b91301/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/mahnoor_backend" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1BV42TwagL/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Mahnoor Fatima. All rights reserved.</p>
+        </div>
     </footer>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>
