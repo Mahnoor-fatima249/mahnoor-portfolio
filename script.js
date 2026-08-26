@@ -73,6 +73,7 @@ function closeMenu() {
 function toggleTheme() {
     const html = document.documentElement;
     const icon = document.getElementById('theme-icon');
+    html.classList.add('theme-transitioning');
 
     if (html.getAttribute('data-theme') === 'dark') {
         html.setAttribute('data-theme', 'light');
@@ -85,6 +86,8 @@ function toggleTheme() {
         icon.classList.add('fa-sun');
         localStorage.setItem('portfolio-theme', 'dark');
     }
+
+    setTimeout(() => html.classList.remove('theme-transitioning'), 600);
 }
 
 function loadTheme() {
@@ -244,9 +247,203 @@ function setupMouseBlur() {
     });
 }
 
+// ---------- SCROLL PROGRESS BAR ----------
+function setupScrollProgress() {
+    const progressBar = document.getElementById('scrollProgress');
+    if (!progressBar) return;
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / docHeight) * 100;
+        progressBar.style.width = progress + '%';
+    });
+}
+
+// ---------- 3D TILT EFFECT ----------
+function setupTiltEffect() {
+    const tiltCards = document.querySelectorAll('.tilt-card');
+
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 15;
+            const rotateY = (centerX - x) / 15;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        });
+    });
+}
+
+// ---------- INTERACTIVE TIMELINE ----------
+function setupTimeline() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    timelineItems.forEach(item => {
+        const content = item.querySelector('.timeline-content');
+        const desc = item.querySelector('.timeline-desc');
+
+        if (!content || !desc) return;
+
+        content.style.cursor = 'pointer';
+        desc.style.maxHeight = '0';
+        desc.style.overflow = 'hidden';
+        desc.style.transition = 'max-height 0.4s ease, margin 0.4s ease';
+        desc.style.marginTop = '0';
+
+        content.addEventListener('click', () => {
+            const isOpen = desc.style.maxHeight !== '0px' && desc.style.maxHeight !== '';
+
+            timelineItems.forEach(otherItem => {
+                const otherDesc = otherItem.querySelector('.timeline-desc');
+                if (otherDesc && otherItem !== item) {
+                    otherDesc.style.maxHeight = '0px';
+                    otherDesc.style.marginTop = '0';
+                    otherItem.querySelector('.timeline-content')?.classList.remove('active');
+                }
+            });
+
+            if (isOpen) {
+                desc.style.maxHeight = '0px';
+                desc.style.marginTop = '0';
+                content.classList.remove('active');
+            } else {
+                desc.style.maxHeight = desc.scrollHeight + 'px';
+                desc.style.marginTop = '8px';
+                content.classList.add('active');
+            }
+        });
+    });
+
+    const firstItem = document.querySelector('.timeline-item .timeline-desc');
+    if (firstItem) {
+        firstItem.style.maxHeight = firstItem.scrollHeight + 'px';
+        firstItem.style.marginTop = '8px';
+        firstItem.closest('.timeline-content')?.classList.add('active');
+    }
+}
+
+// ---------- KONAMI CODE EASTER EGG ----------
+function setupKonamiCode() {
+    const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+    let konamiIndex = 0;
+
+    document.addEventListener('keydown', (e) => {
+        if (e.keyCode === konamiCode[konamiIndex]) {
+            konamiIndex++;
+            if (konamiIndex === konamiCode.length) {
+                showEasterEgg();
+                konamiIndex = 0;
+            }
+        } else {
+            konamiIndex = 0;
+        }
+    });
+}
+
+function showEasterEgg() {
+    const overlay = document.createElement('div');
+    overlay.className = 'easter-egg-overlay';
+    overlay.innerHTML = `
+        <div class="easter-egg-card">
+            <div class="easter-egg-emoji">🎮</div>
+            <h2>Konami Code Activated!</h2>
+            <p>You found the secret! You're a true explorer.</p>
+            <button onclick="this.closest('.easter-egg-overlay').remove()" class="action-btn primary-btn">Close</button>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+    setTimeout(() => overlay.classList.add('active'), 10);
+}
+
+// ---------- PARALLAX SCROLLING ----------
+function setupParallax() {
+    const orbs = document.querySelectorAll('.bg-orb');
+    const heroGlow = document.querySelector('.hero-glow');
+
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        orbs.forEach((orb, i) => {
+            const speed = (i + 1) * 0.03;
+            orb.style.transform = `translateY(${scrollY * speed}px)`;
+        });
+
+        if (heroGlow) {
+            heroGlow.style.transform = `translate(${scrollY * 0.02}px, ${scrollY * 0.05}px)`;
+        }
+    });
+}
+
+// ---------- CUSTOM CURSOR ----------
+function setupCustomCursor() {
+    if (window.innerWidth < 768) return;
+
+    const cursor = document.createElement('div');
+    const cursorDot = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    cursorDot.className = 'custom-cursor-dot';
+    document.body.appendChild(cursor);
+    document.body.appendChild(cursorDot);
+
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursorDot.style.left = mouseX + 'px';
+        cursorDot.style.top = mouseY + 'px';
+    });
+
+    function animateCursor() {
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    const interactiveElements = document.querySelectorAll('a, button, .tilt-card, .timeline-content, .skill-tag');
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.classList.add('cursor-expand');
+            cursorDot.classList.add('cursor-dot-expand');
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('cursor-expand');
+            cursorDot.classList.remove('cursor-dot-expand');
+        });
+    });
+}
+
+// ---------- STAGGER REVEAL ----------
+function setupStaggerReveal() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('stagger-visible');
+                }, index * 80);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.stagger-item').forEach(el => observer.observe(el));
+}
+
 // ---------- INITIALIZE ----------
 document.addEventListener('DOMContentLoaded', () => {
-    // Lock scroll on welcome screen
     document.body.style.overflow = 'hidden';
 
     loadTheme();
@@ -259,4 +456,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setupScrollTop();
     setupSmoothScroll();
     setupMouseBlur();
+    setupScrollProgress();
+    setupTiltEffect();
+    setupTimeline();
+    setupKonamiCode();
+    setupParallax();
+    setupCustomCursor();
+    setupStaggerReveal();
 });
