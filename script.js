@@ -228,6 +228,22 @@ function setupSmoothScroll() {
     });
 }
 
+// ---------- MOUSE BLUR EFFECT ----------
+function setupMouseBlur() {
+    const blur = document.getElementById('mouseBlur');
+    if (!blur) return;
+
+    document.addEventListener('mousemove', (e) => {
+        blur.style.left = e.clientX + 'px';
+        blur.style.top = e.clientY + 'px';
+        blur.classList.add('active');
+    });
+
+    document.addEventListener('mouseleave', () => {
+        blur.classList.remove('active');
+    });
+}
+
 // ---------- INITIALIZE ----------
 document.addEventListener('DOMContentLoaded', () => {
     // Lock scroll on welcome screen
@@ -242,5 +258,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setupActiveNav();
     setupScrollTop();
     setupSmoothScroll();
-});
+    setupMouseBlur();
 });
