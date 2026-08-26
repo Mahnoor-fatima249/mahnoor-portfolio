@@ -72,22 +72,26 @@ function closeMenu() {
 // ---------- THEME TOGGLE ----------
 function toggleTheme() {
     const html = document.documentElement;
+    const btn = document.querySelector('.theme-toggle-btn');
     const icon = document.getElementById('theme-icon');
     html.classList.add('theme-transitioning');
+    btn.classList.add('theme-spin');
 
-    if (html.getAttribute('data-theme') === 'dark') {
-        html.setAttribute('data-theme', 'light');
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        localStorage.setItem('portfolio-theme', 'light');
-    } else {
-        html.setAttribute('data-theme', 'dark');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        localStorage.setItem('portfolio-theme', 'dark');
-    }
-
-    setTimeout(() => html.classList.remove('theme-transitioning'), 600);
+    setTimeout(() => {
+        if (html.getAttribute('data-theme') === 'dark') {
+            html.setAttribute('data-theme', 'light');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            localStorage.setItem('portfolio-theme', 'light');
+        } else {
+            html.setAttribute('data-theme', 'dark');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+            localStorage.setItem('portfolio-theme', 'dark');
+        }
+        btn.classList.remove('theme-spin');
+        setTimeout(() => html.classList.remove('theme-transitioning'), 500);
+    }, 200);
 }
 
 function loadTheme() {
@@ -442,6 +446,138 @@ function setupStaggerReveal() {
     document.querySelectorAll('.stagger-item').forEach(el => observer.observe(el));
 }
 
+// ---------- MAGNETIC BUTTONS ----------
+function setupMagneticButtons() {
+    const magneticBtns = document.querySelectorAll('.magnetic-btn');
+
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0, 0)';
+        });
+    });
+}
+
+// ---------- SCROLL COLOR SHIFT ----------
+function setupScrollColorShift() {
+    const sections = document.querySelectorAll('section[id]');
+    const root = document.documentElement;
+
+    const colorSchemes = {
+        'about': { accent: '#0288d1', light: '#0ea5e9', dark: '#0277bd' },
+        'education': { accent: '#7c3aed', light: '#8b5cf6', dark: '#6d28d9' },
+        'skills': { accent: '#059669', light: '#10b981', dark: '#047857' },
+        'services': { accent: '#d97706', light: '#f59e0b', dark: '#b45309' },
+        'experience': { accent: '#dc2626', light: '#ef4444', dark: '#b91c1c' },
+        'projects': { accent: '#0288d1', light: '#0ea5e9', dark: '#0277bd' },
+        'leetcode': { accent: '#f59e0b', light: '#fbbf24', dark: '#d97706' },
+        'testimonials': { accent: '#8b5cf6', light: '#a78bfa', dark: '#7c3aed' },
+        'achievements': { accent: '#f59e0b', light: '#fbbf24', dark: '#d97706' },
+        'certifications': { accent: '#06b6d4', light: '#22d3ee', dark: '#0891b2' },
+        'contact': { accent: '#0288d1', light: '#0ea5e9', dark: '#0277bd' }
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.getAttribute('id');
+                const colors = colorSchemes[sectionId];
+                if (colors) {
+                    root.style.setProperty('--accent', colors.accent);
+                    root.style.setProperty('--accent-light', colors.light);
+                    root.style.setProperty('--accent-dark', colors.dark);
+                    root.style.setProperty('--accent-glow', colors.accent + '14');
+                    root.style.setProperty('--accent-glow-strong', colors.accent + '2e');
+                }
+            }
+        });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => observer.observe(section));
+}
+
+// ---------- CARD FLIP ----------
+function setupCardFlip() {
+    const flipCards = document.querySelectorAll('.flip-card');
+
+    flipCards.forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+        });
+    });
+}
+
+// ---------- TEXT SCRAMBLE ----------
+function setupTextScramble() {
+    const scrambleElements = document.querySelectorAll('.scramble-text');
+    const chars = '!<>-_\\/[]{}—=+*^?#________';
+
+    scrambleElements.forEach(el => {
+        const originalText = el.textContent;
+        let isScrambling = false;
+
+        el.addEventListener('mouseenter', () => {
+            if (isScrambling) return;
+            isScrambling = true;
+            let iterations = 0;
+            const maxIterations = originalText.length * 2;
+
+            const interval = setInterval(() => {
+                el.textContent = originalText.split('').map((char, index) => {
+                    if (index < iterations / 2) return originalText[index];
+                    if (char === ' ') return ' ';
+                    return chars[Math.floor(Math.random() * chars.length)];
+                }).join('');
+
+                iterations++;
+                if (iterations >= maxIterations) {
+                    clearInterval(interval);
+                    el.textContent = originalText;
+                    isScrambling = false;
+                }
+            }, 30);
+        });
+    });
+}
+
+// ---------- CLICK PARTICLES ----------
+function setupClickParticles() {
+    document.addEventListener('click', (e) => {
+        for (let i = 0; i < 8; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'click-particle';
+            particle.style.left = e.clientX + 'px';
+            particle.style.top = e.clientY + 'px';
+            particle.style.setProperty('--angle', (i * 45) + 'deg');
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 600);
+        }
+    });
+}
+
+// ---------- SECTION ACTIVE INDICATOR ----------
+function setupSectionIndicator() {
+    const sections = document.querySelectorAll('section[id]');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('section-active');
+            } else {
+                entry.target.classList.remove('section-active');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+}
+
 // ---------- INITIALIZE ----------
 document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
@@ -463,4 +599,10 @@ document.addEventListener('DOMContentLoaded', () => {
     setupParallax();
     setupCustomCursor();
     setupStaggerReveal();
+    setupMagneticButtons();
+    setupScrollColorShift();
+    setupCardFlip();
+    setupTextScramble();
+    setupClickParticles();
+    setupSectionIndicator();
 });

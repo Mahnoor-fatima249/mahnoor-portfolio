@@ -75,6 +75,7 @@
         </div>
         <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
             <i class="fas fa-moon" id="theme-icon"></i>
+            <span class="theme-toggle-ring"></span>
         </button>
     </nav>
 
@@ -510,59 +511,140 @@
     <section id="certifications" class="container reveal">
         <h2><i class="fas fa-certificate" style="color: var(--accent); margin-right: 10px;"></i>Certifications</h2>
         <div class="cert-grid">
-            <div class="cert-card">
-                <div class="cert-badge"><i class="fas fa-award"></i></div>
-                <h3>Generative AI Developer</h3>
-                <p>NCEAC - HEC Training (Top Performer)</p>
-                <a href="certificates/hec-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="cert-badge"><i class="fas fa-award"></i></div>
+                        <h3>Generative AI Developer</h3>
+                        <p>NCEAC - HEC Training (Top Performer)</p>
+                        <span class="flip-hint">Click to flip <i class="fas fa-sync-alt"></i></span>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>HEC GenAI Certificate</h3>
+                        <p>Top Performer with 96.08% score</p>
+                        <a href="certificates/hec-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                    </div>
+                </div>
             </div>
-            <div class="cert-card">
-                <div class="cert-badge"><i class="fas fa-award"></i></div>
-                <h3>Aspire Leaders Program</h3>
-                <p>2026 Cohort (Harvard Affiliated)</p>
-                <a href="certificates/aspire-certificatefront.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="cert-badge"><i class="fas fa-award"></i></div>
+                        <h3>Aspire Leaders Program</h3>
+                        <p>2026 Cohort (Harvard Affiliated)</p>
+                        <span class="flip-hint">Click to flip <i class="fas fa-sync-alt"></i></span>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Aspire Leaders</h3>
+                        <p>Harvard-affiliated leadership program</p>
+                        <a href="certificates/aspire-certificatefront.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                    </div>
+                </div>
             </div>
-            <div class="cert-card">
-                <div class="cert-badge"><i class="fas fa-award"></i></div>
-                <h3>Aspire Leaders Program</h3>
-                <p>2026 Cohort - Back</p>
-                <a href="certificates/aspire-certificateback.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="cert-badge"><i class="fas fa-award"></i></div>
+                        <h3>Aspire Leaders Program</h3>
+                        <p>2026 Cohort - Back</p>
+                        <span class="flip-hint">Click to flip <i class="fas fa-sync-alt"></i></span>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Aspire Leaders (Back)</h3>
+                        <p>Program completion verification</p>
+                        <a href="certificates/aspire-certificateback.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                    </div>
+                </div>
             </div>
-            <div class="cert-card">
-                <div class="cert-badge"><i class="fas fa-award"></i></div>
-                <h3>Full Stack Web Dev</h3>
-                <p>TEYZIX CORE Internship</p>
-                <a href="certificates/teyzix-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="cert-badge"><i class="fas fa-award"></i></div>
+                        <h3>Full Stack Web Dev</h3>
+                        <p>TEYZIX CORE Internship</p>
+                        <span class="flip-hint">Click to flip <i class="fas fa-sync-alt"></i></span>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>TEYZIX CORE</h3>
+                        <p>Full-Stack Web Development Internship</p>
+                        <a href="certificates/teyzix-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                    </div>
+                </div>
             </div>
-            <div class="cert-card">
-                <div class="cert-badge"><i class="fas fa-award"></i></div>
-                <h3>Full Stack Web Dev - LOR</h3>
-                <p>TEYZIX CORE Internship</p>
-                <a href="certificates/teyzix-LOR.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="cert-badge"><i class="fas fa-award"></i></div>
+                        <h3>Full Stack Web Dev - LOR</h3>
+                        <p>TEYZIX CORE Internship</p>
+                        <span class="flip-hint">Click to flip <i class="fas fa-sync-alt"></i></span>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>TEYZIX CORE LOR</h3>
+                        <p>Letter of Recommendation</p>
+                        <a href="certificates/teyzix-LOR.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                    </div>
+                </div>
             </div>
-            <div class="cert-card">
-                <div class="cert-badge"><i class="fas fa-award"></i></div>
-                <h3>AI & Automation</h3>
-                <p>Nexe-Agent Internship</p>
-                <a href="certificates/nexe-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="cert-badge"><i class="fas fa-award"></i></div>
+                        <h3>AI & Automation</h3>
+                        <p>Nexe-Agent Internship</p>
+                        <span class="flip-hint">Click to flip <i class="fas fa-sync-alt"></i></span>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>NexeAgent</h3>
+                        <p>AI & Automation Engineering</p>
+                        <a href="certificates/nexe-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                    </div>
+                </div>
             </div>
-            <div class="cert-card">
-                <div class="cert-badge"><i class="fas fa-award"></i></div>
-                <h3>AI Internship</h3>
-                <p>DecodeLabs Virtual Program</p>
-                <a href="certificates/decodelabs-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="cert-badge"><i class="fas fa-award"></i></div>
+                        <h3>AI Internship</h3>
+                        <p>DecodeLabs Virtual Program</p>
+                        <span class="flip-hint">Click to flip <i class="fas fa-sync-alt"></i></span>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>DecodeLabs</h3>
+                        <p>AI Virtual Internship Program</p>
+                        <a href="certificates/decodelabs-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                    </div>
+                </div>
             </div>
-            <div class="cert-card">
-                <div class="cert-badge"><i class="fas fa-award"></i></div>
-                <h3>DYLP Hackathon</h3>
-                <p>Top 30 (26th Position) - National Level</p>
-                <a href="certificates/DYLP Certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="cert-badge"><i class="fas fa-award"></i></div>
+                        <h3>DYLP Hackathon</h3>
+                        <p>Top 30 (26th Position) - National Level</p>
+                        <span class="flip-hint">Click to flip <i class="fas fa-sync-alt"></i></span>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>DYLP Hackathon</h3>
+                        <p>National Level - Top 30 finish</p>
+                        <a href="certificates/DYLP Certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                    </div>
+                </div>
             </div>
-            <div class="cert-card">
-                <div class="cert-badge"><i class="fas fa-award"></i></div>
-                <h3>AI Seekho 2026</h3>
-                <p>National Hackathon Participant</p>
-                <a href="certificates/aiseekho-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View</a>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="cert-badge"><i class="fas fa-award"></i></div>
+                        <h3>AI Seekho 2026</h3>
+                        <p>National Hackathon Participant</p>
+                        <span class="flip-hint">Click to flip <i class="fas fa-sync-alt"></i></span>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>AI Seekho 2026</h3>
+                        <p>#VibeKaregaPakistan</p>
+                        <a href="certificates/aiseekho-certificate.jpg" target="_blank" class="cert-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
