@@ -2,6 +2,31 @@
 // PROFESSIONAL PORTFOLIO - INTERACTIVE JS
 // ============================================
 
+// ---------- SPLASH SCREEN ----------
+function setupSplashScreen() {
+    const splash = document.getElementById('splashScreen');
+    const splashParticles = document.getElementById('splashParticles');
+    if (!splash) return;
+
+    for (let i = 0; i < 25; i++) {
+        const p = document.createElement('div');
+        p.className = 'splash-particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 3 + 's';
+        p.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        const size = Math.random() * 3 + 1;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        splashParticles.appendChild(p);
+    }
+
+    setTimeout(() => {
+        splash.classList.add('hide');
+        document.body.style.overflow = 'auto';
+        setTimeout(() => splash.remove(), 700);
+    }, 3200);
+}
+
 // ---------- TYPING EFFECT ----------
 const typingPhrases = [
     "Agentic AI Developer",
@@ -797,6 +822,7 @@ function setupSkillRings() {
 document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
 
+    setupSplashScreen();
     loadTheme();
     typeEffect();
     createParticles();
