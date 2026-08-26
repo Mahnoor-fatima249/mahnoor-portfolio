@@ -118,43 +118,6 @@ function setupScrollReveal() {
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-// ---------- COUNTER ANIMATION ----------
-function setupCounters() {
-    const counters = document.querySelectorAll('.counter');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    counters.forEach(counter => observer.observe(counter));
-}
-
-function animateCounter(element) {
-    const target = parseInt(element.getAttribute('data-target'));
-    const suffix = element.getAttribute('data-suffix') || '+';
-    const duration = 2000;
-    const start = performance.now();
-
-    function update(currentTime) {
-        const elapsed = currentTime - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.round(eased * target);
-
-        element.textContent = current + suffix;
-
-        if (progress < 1) {
-            requestAnimationFrame(update);
-        }
-    }
-
-    requestAnimationFrame(update);
-}
-
 // ---------- NAV SCROLL EFFECT ----------
 function setupNavScroll() {
     const nav = document.getElementById('mainNav');
@@ -578,6 +541,258 @@ function setupSectionIndicator() {
     sections.forEach(section => observer.observe(section));
 }
 
+// ---------- MOUSE TRAIL ----------
+function setupMouseTrail() {
+    if (window.innerWidth < 768) return;
+    let lastX = 0, lastY = 0;
+    let trailTimeout;
+
+    document.addEventListener('mousemove', (e) => {
+        clearTimeout(trailTimeout);
+        trailTimeout = setTimeout(() => {
+            const dx = e.clientX - lastX;
+            const dy = e.clientY - lastY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist > 8) {
+                createTrailParticle(e.clientX, e.clientY);
+                lastX = e.clientX;
+                lastY = e.clientY;
+            }
+        }, 16);
+    });
+}
+
+function createTrailParticle(x, y) {
+    const particle = document.createElement('div');
+    particle.className = 'mouse-trail-particle';
+    particle.style.left = x + 'px';
+    particle.style.top = y + 'px';
+    const hue = Math.random() * 40 + 190;
+    particle.style.background = `hsl(${hue}, 80%, 60%)`;
+    document.body.appendChild(particle);
+    setTimeout(() => particle.remove(), 600);
+}
+
+// ---------- TYPING ON SCROLL ----------
+function setupTypingOnScroll() {
+    const headers = document.querySelectorAll('.typing-header');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.typed) {
+                entry.target.dataset.typed = 'true';
+                typeHeader(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    headers.forEach(h => observer.observe(h));
+}
+
+function typeHeader(el) {
+    const text = el.dataset.text || el.textContent;
+    el.textContent = '';
+    el.style.visibility = 'visible';
+    const cursor = document.createElement('span');
+    cursor.className = 'typing-cursor';
+    el.appendChild(cursor);
+
+    let i = 0;
+    const interval = setInterval(() => {
+        if (i < text.length) {
+            el.insertBefore(document.createTextNode(text[i]), cursor);
+            i++;
+        } else {
+            clearInterval(interval);
+            setTimeout(() => cursor.remove(), 1500);
+        }
+    }, 50);
+}
+
+// ---------- DYNAMIC PAGE TITLE ----------
+function setupDynamicTitle() {
+    const sections = document.querySelectorAll('section[id]');
+    const baseTitle = 'Mahnoor Fatima | AI & Backend Engineer';
+    const sectionTitles = {
+        'about': '👋 Hi, I\'m Mahnoor',
+        'education': '🎓 Education',
+        'skills': '⚡ Skills & Tech Stack',
+        'services': '💼 What I Do',
+        'experience': '🚀 Experience',
+        'projects': '📂 Projects',
+        'leetcode': '💻 LeetCode Progress',
+        'testimonials': '💬 Recommendations',
+        'achievements': '🏆 Achievements',
+        'certifications': '📜 Certifications',
+        'contact': '📬 Get In Touch'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                document.title = sectionTitles[id] || baseTitle;
+            }
+        });
+    }, { threshold: 0.3 });
+
+    sections.forEach(s => observer.observe(s));
+}
+
+// ---------- FLOATING QUICK NAV ----------
+function setupFloatingNav() {
+    const floatingNav = document.getElementById('floatingNav');
+    if (!floatingNav) return;
+
+    const sections = document.querySelectorAll('section[id]');
+    const dots = floatingNav.querySelectorAll('.floating-nav-dot');
+
+    function updateNav() {
+        const scrollY = window.scrollY + window.innerHeight / 3;
+        let currentId = '';
+
+        sections.forEach(section => {
+            if (scrollY >= section.offsetTop) {
+                currentId = section.getAttribute('id');
+            }
+        });
+
+        dots.forEach(dot => {
+            dot.classList.toggle('active', dot.dataset.section === currentId);
+        });
+
+        floatingNav.classList.toggle('visible', window.scrollY > 400);
+    }
+
+    window.addEventListener('scroll', updateNav);
+    updateNav();
+}
+
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) section.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ---------- KEYBOARD NAVIGATION ----------
+function setupKeyboardNav() {
+    const sections = document.querySelectorAll('section[id]');
+    const sectionIds = Array.from(sections).map(s => s.id);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        const scrollY = window.scrollY + window.innerHeight / 3;
+        let currentIndex = 0;
+
+        sections.forEach((s, i) => {
+            if (scrollY >= s.offsetTop) currentIndex = i;
+        });
+
+        if (e.key === 'ArrowDown' || e.key === 'j') {
+            e.preventDefault();
+            const next = Math.min(currentIndex + 1, sectionIds.length - 1);
+            document.getElementById(sectionIds[next]).scrollIntoView({ behavior: 'smooth' });
+        } else if (e.key === 'ArrowUp' || e.key === 'k') {
+            e.preventDefault();
+            const prev = Math.max(currentIndex - 1, 0);
+            document.getElementById(sectionIds[prev]).scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+}
+
+// ---------- SMOOTH COUNTER WITH COMMAS ----------
+function setupCounters() {
+    const counters = document.querySelectorAll('.counter');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => observer.observe(counter));
+}
+
+function animateCounter(element) {
+    const target = parseInt(element.getAttribute('data-target'));
+    const suffix = element.getAttribute('data-suffix') || '+';
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(eased * target);
+        element.textContent = current.toLocaleString() + suffix;
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+    }
+
+    requestAnimationFrame(update);
+}
+
+// ---------- SECTION TYPING HEADERS ----------
+function setupSectionHeaders() {
+    const headers = document.querySelectorAll('.section-typing-header');
+    if (!headers.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.typed) {
+                entry.target.dataset.typed = 'true';
+                const text = entry.target.dataset.text || entry.target.textContent;
+                entry.target.textContent = '';
+                entry.target.style.visibility = 'visible';
+
+                const cursor = document.createElement('span');
+                cursor.className = 'typing-cursor';
+                entry.target.appendChild(cursor);
+
+                let i = 0;
+                const interval = setInterval(() => {
+                    if (i < text.length) {
+                        entry.target.insertBefore(document.createTextNode(text[i]), cursor);
+                        i++;
+                    } else {
+                        clearInterval(interval);
+                        setTimeout(() => cursor.style.display = 'none', 1200);
+                    }
+                }, 40);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.6 });
+
+    headers.forEach(h => {
+        h.style.visibility = 'hidden';
+        observer.observe(h);
+    });
+}
+
+// ---------- SKILL RINGS ANIMATION ----------
+function setupSkillRings() {
+    const rings = document.querySelectorAll('.skill-ring-fill');
+    if (!rings.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    rings.forEach(ring => observer.observe(ring));
+}
+
 // ---------- INITIALIZE ----------
 document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
@@ -605,4 +820,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setupTextScramble();
     setupClickParticles();
     setupSectionIndicator();
+    setupMouseTrail();
+    setupTypingOnScroll();
+    setupDynamicTitle();
+    setupFloatingNav();
+    setupKeyboardNav();
+    setupSectionHeaders();
+    setupSkillRings();
 });
