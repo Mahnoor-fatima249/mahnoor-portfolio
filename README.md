@@ -2,13 +2,7 @@
 
 <br>
 
-<table>
-  <tr>
-    <td align="center" style="border: 2px solid #555; padding: 20px 40px; background: #0d1117;">
-      <img src="profile.jpeg" alt="Mahnoor Fatima" width="180" style="border-radius: 50%; filter: grayscale(100%);">
-    </td>
-  </tr>
-</table>
+<img src="profile.jpeg" alt="Mahnoor Fatima" width="180">
 
 <br>
 
