@@ -1,12 +1,6 @@
 <div align="center">
 
-<br>
-
-<img src="profile.jpeg" alt="Mahnoor Fatima" width="180">
-
-<br>
-
-# `MAHNOR FATIMA`
+# `MAHNOOR FATIMA`
 
 **Backend Engineer · AI Developer · System Architect**
 
@@ -86,36 +80,6 @@ highlights:
 
 <br>
 
-## `.stats`
-
-<div align="center">
-
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=Mahnoor-fatima249&show_icons=true&theme=radical&hide_border=true&include_all_commits=true&count_private=true" />
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mahnoor-fatima249&layout=compact&theme=radical&hide_border=true" />
-
-</div>
-
----
-
-<br>
-
-<div align="center">
-
-![Snake animation](https://raw.githubusercontent.com/Mahnoor-fatima249/Mahnoor-fatima249/output/github-contribution-grid-snake-dark.svg)
-
-</div>
-
----
-
-<br>
-
-<div align="center">
-
-```
- "I don't just write code — I architect systems."
-```
-
-<br>
 
 <sub>© 2026 Mahnoor Fatima · All Rights Reserved</sub>
 
