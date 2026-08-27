@@ -64,6 +64,9 @@ function closeMenu() {
 
 // ---------- SCROLL REVEAL ----------
 function setupScrollReveal() {
+    // First make elements animatable (hidden)
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('animate-init'));
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
