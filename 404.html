@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Mahnoor Fatima</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #0288d1;
+            --bg: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border: #e2e8f0;
+        }
+        [data-theme="dark"] {
+            --accent: #0ea5e9;
+            --bg: #0a1018;
+            --bg-card: #0f1a28;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #1e293b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .error-container {
+            max-width: 500px;
+        }
+        .error-code {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .error-emoji {
+            font-size: 4rem;
+            margin: 20px 0;
+        }
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--accent), #0277bd);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(2, 136, 209, 0.3);
+        }
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(2, 136, 209, 0.4);
+        }
+        .ascii-art {
+            font-family: monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 40px;
+            white-space: pre;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <div class="error-emoji">🤖</div>
+        <h1>Page Not Found</h1>
+        <p>Looks like this page went on a coffee break. Don't worry, it happens to the best of us!</p>
+        <a href="/" class="home-btn">
+            <i class="fas fa-home"></i> Back to Portfolio
+        </a>
+        <div class="ascii-art">
+    ┌─────────────────────────┐
+    │   Mahnoor's Portfolio   │
+    │    AI & Backend Dev     │
+    └─────────────────────────┘
+        </div>
+    </div>
+</body>
+</html>

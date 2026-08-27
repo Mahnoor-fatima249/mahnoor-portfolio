@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupChatbot();
     setupGSAPAnimations();
     typeEffect();
+    fetchGitHubStats();
 });
 
 // ---------- SPLASH SCREEN ----------
@@ -392,4 +393,17 @@ function setupChatbot() {
             handleResponse(btn.dataset.question);
         });
     });
+}
+
+// ---------- LIVE GITHUB STATS ----------
+function fetchGitHubStats() {
+    fetch('https://api.github.com/users/Mahnoor-fatima249')
+        .then(res => res.json())
+        .then(data => {
+            const followersEl = document.getElementById('gh-followers');
+            const followingEl = document.getElementById('gh-following');
+            if (followersEl) followersEl.textContent = data.followers || '--';
+            if (followingEl) followingEl.textContent = data.following || '--';
+        })
+        .catch(() => {});
 }

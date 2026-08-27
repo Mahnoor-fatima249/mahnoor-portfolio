@@ -1253,16 +1253,29 @@ nav.scrolled {
     margin-bottom: 16px;
 }
 
-.project-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
+.project-image {
+    flex-shrink: 0;
+}
+
+.project-placeholder-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(2, 136, 209, 0.15), rgba(14, 165, 233, 0.1));
+    border: 1px solid rgba(2, 136, 209, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--accent-glow);
+    font-size: 1.5rem;
     color: var(--accent);
-    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-placeholder-img {
+    background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px var(--accent-glow);
 }
 
 .project-links a {
@@ -3494,4 +3507,97 @@ section.section-active .section-badge {
     .chatbot-widget { bottom: 15px; right: 15px; }
     .chatbot-toggle { width: 50px; height: 50px; font-size: 1.2rem; }
     .chatbot-window { width: calc(100vw - 30px); right: -10px; }
+}
+
+/* ============================================
+    SKELETON LOADING
+   ============================================ */
+.skeleton {
+    background: linear-gradient(90deg, var(--bg-alt) 25%, var(--border) 50%, var(--bg-alt) 75%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s infinite;
+    border-radius: 8px;
+}
+
+@keyframes skeletonShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.skeleton-text { height: 14px; margin-bottom: 8px; }
+.skeleton-title { height: 24px; width: 60%; margin-bottom: 12px; }
+.skeleton-avatar { width: 80px; height: 80px; border-radius: 50%; }
+.skeleton-btn { height: 40px; width: 120px; border-radius: 8px; }
+
+/* ============================================
+    SMOOTH PAGE LOAD
+   ============================================ */
+@keyframes pageLoad {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    animation: pageLoad 0.6s ease-out;
+}
+
+/* ============================================
+    HOVER LIFT EFFECT
+   ============================================ */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* ============================================
+    GRADIENT TEXT ANIMATION
+   ============================================ */
+.animated-gradient {
+    background: linear-gradient(135deg, #0288d1, #38bdf8, #0ea5e9, #0288d1);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientFlow 4s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ============================================
+    PULSE GLOW EFFECT
+   ============================================ */
+.pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 5px var(--accent-glow); }
+    50% { box-shadow: 0 0 20px var(--accent-glow-strong), 0 0 40px var(--accent-glow); }
+}
+
+/* ============================================
+    FOCUS RING
+   ============================================ */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ============================================
+    REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
