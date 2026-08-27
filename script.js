@@ -3,6 +3,9 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Splash screen first
+    setupSplashScreen();
+    
     // Basic setup
     loadTheme();
     createParticles();
@@ -22,6 +25,33 @@ document.addEventListener('DOMContentLoaded', () => {
     setupGSAPAnimations();
     typeEffect();
 });
+
+// ---------- SPLASH SCREEN ----------
+function setupSplashScreen() {
+    const splash = document.getElementById('splashScreen');
+    const particles = document.getElementById('splashParticles');
+    if (!splash) return;
+
+    // Create particles
+    for (let i = 0; i < 25; i++) {
+        const p = document.createElement('div');
+        p.className = 'splash-particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 3 + 's';
+        p.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        const size = Math.random() * 3 + 1;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        particles.appendChild(p);
+    }
+
+    // Hide splash after 3 seconds
+    setTimeout(() => {
+        splash.classList.add('hide');
+        document.body.style.overflow = 'auto';
+        setTimeout(() => splash.remove(), 700);
+    }, 3200);
+}
 
 // ---------- TYPING EFFECT ----------
 const typingPhrases = [
