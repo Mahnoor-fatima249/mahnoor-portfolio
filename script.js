@@ -853,4 +853,359 @@ document.addEventListener('DOMContentLoaded', () => {
     setupKeyboardNav();
     setupSectionHeaders();
     setupSkillRings();
+    
+    // New features
+    setupChatbot();
+    setupKeyboardShortcuts();
+    setupGSAPAnimations();
+    setupSkillsTreeAnimation();
 });
+
+// ============================================
+// AI CHATBOT WIDGET
+// ============================================
+function setupChatbot() {
+    const toggle = document.getElementById('chatbotToggle');
+    const window_ = document.getElementById('chatbotWindow');
+    const close = document.getElementById('chatbotClose');
+    const input = document.getElementById('chatbotInput');
+    const send = document.getElementById('chatbotSend');
+    const messages = document.getElementById('chatbotMessages');
+    const suggestions = document.querySelectorAll('.chatbot-suggestion');
+
+    if (!toggle || !window_) return;
+
+    const responses = {
+        skills: "Mahnoor is skilled in:\n\n Python (90%) | Django (80%) | FastAPI (85%)\n React (75%) | AI/LLM (85%) | Docker (70%)\n\nShe also knows JavaScript, Java, C++, and has strong DSA fundamentals!",
+        projects: "Mahnoor has built 42+ projects including:\n\n AI Study Assistant - LLM-powered learning\n AI Agentic Dev - Autonomous AI workflows\n PAK Job Finder - Job portal\n AI News Platform - Smart news app\n\nCheck out the Projects section for more!",
+        experience: "Mahnoor's experience:\n\n Current: Backend Developer @ NexeAgent\n Technical Director @ WICS\n Team Lead @ National Hackathons\n Intern @ TEYZIX CORE & DecodeLabs\n\nShe's a proven leader with 3+ internships!",
+        contact: "You can reach Mahnoor through:\n\n LinkedIn: mahnoor-fatima-529b91301\n GitHub: Mahnoor-fatima249\n Instagram: @mahnoor_backend\n\nOr use the Contact form on this portfolio!",
+        education: "Mahnoor is pursuing:\n\n BSIT at Virtual University of Pakistan\n Currently in 6th Semester\n HEC GenAI Top Performer (96.08%!)\n\nShe's focused on software engineering and AI!",
+        default: "I can tell you about Mahnoor's skills, projects, experience, education, or how to contact her. Just click a suggestion or type your question!"
+    };
+
+    function toggleChat() {
+        window_.classList.toggle('active');
+        if (window_.classList.contains('active')) {
+            input.focus();
+        }
+    }
+
+    function addMessage(text, isUser = false) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
+        msgDiv.innerHTML = `
+            <div class="chatbot-msg-avatar"><i class="fas fa-${isUser ? 'user' : 'robot'}"></i></div>
+            <div class="chatbot-msg-content"><p>${text.replace(/\n/g, '<br>')}</p></div>
+        `;
+        messages.appendChild(msgDiv);
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    function handleResponse(question) {
+        const lower = question.toLowerCase();
+        let response = responses.default;
+
+        if (lower.includes('skill') || lower.includes('technology') || lower.includes('know')) {
+            response = responses.skills;
+        } else if (lower.includes('project') || lower.includes('work') || lower.includes('built')) {
+            response = responses.projects;
+        } else if (lower.includes('experience') || lower.includes('job') || lower.includes('intern')) {
+            response = responses.experience;
+        } else if (lower.includes('contact') || lower.includes('reach') || lower.includes('email') || lower.includes('linkedin')) {
+            response = responses.contact;
+        } else if (lower.includes('education') || lower.includes('study') || lower.includes('university')) {
+            response = responses.education;
+        }
+
+        setTimeout(() => addMessage(response), 500);
+    }
+
+    toggle.addEventListener('click', toggleChat);
+    close.addEventListener('click', toggleChat);
+
+    send.addEventListener('click', () => {
+        const text = input.value.trim();
+        if (text) {
+            addMessage(text, true);
+            input.value = '';
+            handleResponse(text);
+        }
+    });
+
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            send.click();
+        }
+    });
+
+    suggestions.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const question = btn.dataset.question;
+            addMessage(question, true);
+            handleResponse(question);
+        });
+    });
+}
+
+// ============================================
+// KEYBOARD SHORTCUTS
+// ============================================
+function setupKeyboardShortcuts() {
+    const modal = document.getElementById('shortcutsModal');
+
+    document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        switch(e.key) {
+            case '?':
+                e.preventDefault();
+                modal.classList.toggle('active');
+                break;
+            case 't':
+            case 'T':
+                if (!e.ctrlKey && !e.metaKey) {
+                    e.preventDefault();
+                    toggleTheme();
+                }
+                break;
+            case 'g':
+            case 'G':
+                if (!e.ctrlKey && !e.metaKey) {
+                    e.preventDefault();
+                    window.open('https://github.com/Mahnoor-fatima249', '_blank');
+                }
+                break;
+            case 'c':
+            case 'C':
+                if (!e.ctrlKey && !e.metaKey) {
+                    e.preventDefault();
+                    scrollToSection('contact');
+                }
+                break;
+            case 'Escape':
+                modal.classList.remove('active');
+                document.getElementById('chatbotWindow')?.classList.remove('active');
+                break;
+        }
+    });
+}
+
+// ============================================
+// GSAP SCROLL ANIMATIONS
+// ============================================
+function setupGSAPAnimations() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate sections on scroll
+    gsap.utils.toArray('.container').forEach((section, i) => {
+        gsap.from(section, {
+            scrollTrigger: {
+                trigger: section,
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            delay: i * 0.05,
+            ease: 'power3.out'
+        });
+    });
+
+    // Animate skill tags
+    gsap.utils.toArray('.skill-tag').forEach((tag, i) => {
+        gsap.from(tag, {
+            scrollTrigger: {
+                trigger: tag,
+                start: 'top 90%'
+            },
+            scale: 0.8,
+            opacity: 0,
+            duration: 0.4,
+            delay: i * 0.03,
+            ease: 'back.out(1.7)'
+        });
+    });
+
+    // Animate project cards
+    gsap.utils.toArray('.project-card').forEach((card, i) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 85%'
+            },
+            y: 60,
+            opacity: 0,
+            duration: 0.6,
+            delay: i * 0.1,
+            ease: 'power3.out'
+        });
+    });
+
+    // Animate timeline items
+    gsap.utils.toArray('.timeline-item').forEach((item, i) => {
+        gsap.from(item, {
+            scrollTrigger: {
+                trigger: item,
+                start: 'top 85%'
+            },
+            x: -50,
+            opacity: 0,
+            duration: 0.6,
+            delay: i * 0.15,
+            ease: 'power3.out'
+        });
+    });
+
+    // Animate stat boxes
+    gsap.utils.toArray('.stat-box').forEach((box, i) => {
+        gsap.from(box, {
+            scrollTrigger: {
+                trigger: box,
+                start: 'top 90%'
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.5,
+            delay: i * 0.1,
+            ease: 'power2.out'
+        });
+    });
+
+    // Parallax for background orbs
+    gsap.utils.toArray('.bg-orb').forEach((orb, i) => {
+        gsap.to(orb, {
+            scrollTrigger: {
+                trigger: 'body',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 1
+            },
+            y: (i + 1) * 100,
+            ease: 'none'
+        });
+    });
+
+    // Hero section animations
+    gsap.from('.hero-badge', {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        delay: 3.5
+    });
+
+    gsap.from('.hero-title', {
+        y: 40,
+        opacity: 0,
+        duration: 0.7,
+        delay: 3.7
+    });
+
+    gsap.from('.tagline', {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        delay: 3.9
+    });
+
+    gsap.from('.hero-desc', {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        delay: 4.1
+    });
+
+    gsap.from('.hero-actions', {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        delay: 4.3
+    });
+
+    gsap.from('.hero-image-box', {
+        x: 100,
+        opacity: 0,
+        duration: 0.8,
+        delay: 4,
+        ease: 'power3.out'
+    });
+}
+
+// ============================================
+// SKILLS TREE ANIMATION
+// ============================================
+function setupSkillsTreeAnimation() {
+    const tree = document.querySelector('.skills-tree');
+    if (!tree) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                tree.classList.add('animated');
+                animateTreeNodes();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    observer.observe(tree);
+}
+
+function animateTreeNodes() {
+    const branches = document.querySelectorAll('.tree-branch');
+    const center = document.querySelector('.tree-center-node');
+
+    if (typeof gsap !== 'undefined') {
+        gsap.from(center, {
+            scale: 0,
+            opacity: 0,
+            duration: 0.6,
+            ease: 'back.out(1.7)'
+        });
+
+        branches.forEach((branch, i) => {
+            gsap.from(branch, {
+                y: 50,
+                opacity: 0,
+                duration: 0.5,
+                delay: 0.3 + (i * 0.15),
+                ease: 'power3.out'
+            });
+        });
+    }
+}
+
+// ---------- DYNAMIC PAGE TITLE ----------
+function setupDynamicTitle() {
+    const sections = document.querySelectorAll('section[id]');
+    const baseTitle = 'Mahnoor Fatima | AI & Backend Engineer';
+    const sectionTitles = {
+        'about': '👋 Hi, I\'m Mahnoor',
+        'education': '🎓 Education',
+        'skills': '⚡ Skills & Tech Stack',
+        'services': '💼 What I Do',
+        'experience': '🚀 Experience',
+        'projects': '📂 Projects',
+        'github-stats': '📊 GitHub Activity',
+        'leetcode': '💻 LeetCode Progress',
+        'testimonials': '💬 Recommendations',
+        'blog': '📝 Tech Blog',
+        'achievements': '🏆 Achievements',
+        'certifications': '📜 Certifications',
+        'contact': '📬 Get In Touch'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                document.title = sectionTitles[id] || baseTitle;
+            }
+        });
+    }, { threshold: 0.3 });
+
+    sections.forEach(s => observer.observe(s));
+}

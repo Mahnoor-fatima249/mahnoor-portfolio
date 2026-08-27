@@ -12,6 +12,8 @@
     <meta name="theme-color" content="#0288d1">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -54,8 +56,10 @@
         <div class="floating-nav-dot" data-section="services" onclick="scrollToSection('services')"><span class="floating-nav-label">Services</span></div>
         <div class="floating-nav-dot" data-section="experience" onclick="scrollToSection('experience')"><span class="floating-nav-label">Experience</span></div>
         <div class="floating-nav-dot" data-section="projects" onclick="scrollToSection('projects')"><span class="floating-nav-label">Projects</span></div>
+        <div class="floating-nav-dot" data-section="github-stats" onclick="scrollToSection('github-stats')"><span class="floating-nav-label">GitHub</span></div>
         <div class="floating-nav-dot" data-section="leetcode" onclick="scrollToSection('leetcode')"><span class="floating-nav-label">LeetCode</span></div>
         <div class="floating-nav-dot" data-section="testimonials" onclick="scrollToSection('testimonials')"><span class="floating-nav-label">Testimonials</span></div>
+        <div class="floating-nav-dot" data-section="blog" onclick="scrollToSection('blog')"><span class="floating-nav-label">Blog</span></div>
         <div class="floating-nav-dot" data-section="achievements" onclick="scrollToSection('achievements')"><span class="floating-nav-label">Achievements</span></div>
         <div class="floating-nav-dot" data-section="certifications" onclick="scrollToSection('certifications')"><span class="floating-nav-label">Certs</span></div>
         <div class="floating-nav-dot" data-section="contact" onclick="scrollToSection('contact')"><span class="floating-nav-label">Contact</span></div>
@@ -107,10 +111,9 @@
             <a href="#services" class="nav-btn" onclick="closeMenu()" role="menuitem">Services</a>
             <a href="#experience" class="nav-btn" onclick="closeMenu()" role="menuitem">Experience</a>
             <a href="#projects" class="nav-btn" onclick="closeMenu()" role="menuitem">Projects</a>
+            <a href="#github-stats" class="nav-btn" onclick="closeMenu()" role="menuitem">GitHub</a>
             <a href="#leetcode" class="nav-btn" onclick="closeMenu()" role="menuitem">LeetCode</a>
-            <a href="#testimonials" class="nav-btn" onclick="closeMenu()" role="menuitem">Testimonials</a>
-            <a href="#achievements" class="nav-btn" onclick="closeMenu()" role="menuitem">Achievements</a>
-            <a href="#certifications" class="nav-btn" onclick="closeMenu()" role="menuitem">Certs</a>
+            <a href="#blog" class="nav-btn" onclick="closeMenu()" role="menuitem">Blog</a>
             <a href="#contact" class="nav-btn" onclick="closeMenu()" role="menuitem">Contact</a>
         </div>
         <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme" aria-label="Toggle dark/light theme">
@@ -201,6 +204,69 @@
     <!-- Skills Section -->
     <section id="skills" class="container reveal" aria-label="Skills and technologies">
         <h2><i class="fas fa-wand-magic-sparkles" style="color: var(--accent); margin-right: 10px;"></i>Core Tech Stack & Skills</h2>
+        
+        <!-- Interactive Skills Tree -->
+        <div class="skills-tree-container">
+            <div class="skills-tree">
+                <div class="tree-center">
+                    <div class="tree-center-node">
+                        <i class="fas fa-code"></i>
+                        <span>Mahnoor</span>
+                    </div>
+                </div>
+                <div class="tree-branches">
+                    <div class="tree-branch branch-1">
+                        <div class="branch-line"></div>
+                        <div class="tree-node main-node">
+                            <i class="fas fa-brain"></i>
+                            <span>AI/LLM</span>
+                        </div>
+                        <div class="tree-sub-nodes">
+                            <div class="sub-node"><span>Groq</span></div>
+                            <div class="sub-node"><span>Azure ML</span></div>
+                            <div class="sub-node"><span>RAG</span></div>
+                        </div>
+                    </div>
+                    <div class="tree-branch branch-2">
+                        <div class="branch-line"></div>
+                        <div class="tree-node main-node">
+                            <i class="fas fa-server"></i>
+                            <span>Backend</span>
+                        </div>
+                        <div class="tree-sub-nodes">
+                            <div class="sub-node"><span>Python</span></div>
+                            <div class="sub-node"><span>Django</span></div>
+                            <div class="sub-node"><span>FastAPI</span></div>
+                        </div>
+                    </div>
+                    <div class="tree-branch branch-3">
+                        <div class="branch-line"></div>
+                        <div class="tree-node main-node">
+                            <i class="fab fa-react"></i>
+                            <span>Frontend</span>
+                        </div>
+                        <div class="tree-sub-nodes">
+                            <div class="sub-node"><span>React</span></div>
+                            <div class="sub-node"><span>JavaScript</span></div>
+                            <div class="sub-node"><span>HTML/CSS</span></div>
+                        </div>
+                    </div>
+                    <div class="tree-branch branch-4">
+                        <div class="branch-line"></div>
+                        <div class="tree-node main-node">
+                            <i class="fas fa-tools"></i>
+                            <span>DevOps</span>
+                        </div>
+                        <div class="tree-sub-nodes">
+                            <div class="sub-node"><span>Docker</span></div>
+                            <div class="sub-node"><span>Git</span></div>
+                            <div class="sub-node"><span>Linux</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="skill-rings-grid">
             <div class="skill-ring-item">
                 <svg viewBox="0 0 80 80"><circle class="skill-ring-bg" cx="40" cy="40" r="35"/><circle class="skill-ring-fill" cx="40" cy="40" r="35" style="--ring-offset: 22;"/></svg>
@@ -346,13 +412,17 @@
                 <div class="project-card-header">
                     <div class="project-icon"><i class="fas fa-graduation-cap"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/Mahnoor-fatima249/AI_Study_Assistant" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/Mahnoor-fatima249/AI_Study_Assistant" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <h3>AI Study Assistant</h3>
                 <p>Smart educational assistant powered by LLM workflows for personalized learning.</p>
                 <div class="project-tags">
                     <span>Python</span><span>LLM</span><span>FastAPI</span>
+                </div>
+                <div class="project-tech-stack">
+                    <span class="tech-badge">LangChain</span>
+                    <span class="tech-badge">Groq API</span>
                 </div>
             </div>
             <div class="project-card tilt-card glass-hover neon-glow">
@@ -445,6 +515,39 @@
                 <div class="project-tags">
                     <span>Python</span><span>REST API</span><span>JSON</span>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Live Stats Section -->
+    <section id="github-stats" class="container reveal" aria-label="GitHub Statistics">
+        <h2><i class="fab fa-github" style="color: var(--accent); margin-right: 10px;"></i>GitHub Activity</h2>
+        <div class="github-stats-wrapper">
+            <div class="github-profile-card">
+                <div class="github-avatar-wrap">
+                    <img src="https://avatars.githubusercontent.com/Mahnoor-fatima249" alt="GitHub Avatar" class="github-avatar" loading="lazy">
+                    <div class="github-status-dot"></div>
+                </div>
+                <div class="github-profile-info">
+                    <h3>@Mahnoor-fatima249</h3>
+                    <p class="github-bio">Building AI-Powered Products | Backend Engineer</p>
+                    <div class="github-profile-stats">
+                        <span><i class="fas fa-users"></i> <span id="gh-followers">--</span> Followers</span>
+                        <span><i class="fas fa-user-friends"></i> <span id="gh-following">--</span> Following</span>
+                    </div>
+                </div>
+                <a href="https://github.com/Mahnoor-fatima249" target="_blank" class="action-btn outline-btn github-btn">
+                    <i class="fab fa-github"></i> View Profile
+                </a>
+            </div>
+            <div class="github-contrib-graph">
+                <h4>Contribution Graph</h4>
+                <img src="https://github-readme-stats.vercel.app/api?username=Mahnoor-fatima249&show_icons=true&theme=default&hide_border=true&bg_color=transparent&title_color=0288d1&icon_color=0ea5e9&text_color=0f172a" alt="GitHub Stats" class="github-stats-img" loading="lazy">
+                <img src="https://github-readme-streak-stats.herokuapp.com/?user=Mahnoor-fatima249&theme=default&hide_border=true&background=transparent&stroke=0288d1&ring=0ea5e9&fire=0288d1&currStreakLabel=0288d1" alt="GitHub Streak" class="github-stats-img" loading="lazy">
+            </div>
+            <div class="github-top-langs">
+                <h4>Top Languages</h4>
+                <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mahnoor-fatima249&layout=compact&theme=default&hide_border=true&bg_color=transparent&title_color=0288d1&text_color=0f172a" alt="Top Languages" class="github-langs-img" loading="lazy">
             </div>
         </div>
     </section>
@@ -547,7 +650,70 @@
         </div>
     </section>
 
-    <!-- Colleague Testimonials - merged into testimonials above -->
+    <!-- Blog Section -->
+    <section id="blog" class="container reveal" aria-label="Technical Blog">
+        <h2><i class="fas fa-pen-nib" style="color: var(--accent); margin-right: 10px;"></i>Tech Blog</h2>
+        <p class="section-subtitle">Technical articles, tutorials, and insights</p>
+        <div class="blog-grid">
+            <article class="blog-card tilt-card glass-hover">
+                <div class="blog-card-image">
+                    <div class="blog-placeholder-img">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <span class="blog-category">AI/ML</span>
+                </div>
+                <div class="blog-card-content">
+                    <h3>Building Agentic AI Systems with FastAPI</h3>
+                    <p>A comprehensive guide to building production-ready AI agents using Python, FastAPI, and LLM APIs.</p>
+                    <div class="blog-meta">
+                        <span><i class="fas fa-calendar"></i> Aug 2026</span>
+                        <span><i class="fas fa-clock"></i> 8 min read</span>
+                    </div>
+                    <a href="https://github.com/Mahnoor-fatima249/ai-agentic-Developer" target="_blank" class="blog-read-more">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            <article class="blog-card tilt-card glass-hover">
+                <div class="blog-card-image">
+                    <div class="blog-placeholder-img">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <span class="blog-category">Backend</span>
+                </div>
+                <div class="blog-card-content">
+                    <h3>RESTful API Design Best Practices</h3>
+                    <p>Learn how to design scalable, maintainable APIs with proper error handling, authentication, and documentation.</p>
+                    <div class="blog-meta">
+                        <span><i class="fas fa-calendar"></i> Jul 2026</span>
+                        <span><i class="fas fa-clock"></i> 6 min read</span>
+                    </div>
+                    <a href="https://github.com/Mahnoor-fatima249" target="_blank" class="blog-read-more">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            <article class="blog-card tilt-card glass-hover">
+                <div class="blog-card-image">
+                    <div class="blog-placeholder-img">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <span class="blog-category">Tutorial</span>
+                </div>
+                <div class="blog-card-content">
+                    <h3>RAG Pipeline: From Zero to Production</h3>
+                    <p>Step-by-step tutorial on building Retrieval-Augmented Generation systems with vector databases.</p>
+                    <div class="blog-meta">
+                        <span><i class="fas fa-calendar"></i> Jun 2026</span>
+                        <span><i class="fas fa-clock"></i> 10 min read</span>
+                    </div>
+                    <a href="https://github.com/Mahnoor-fatima249" target="_blank" class="blog-read-more">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
 
     <!-- Achievements -->
     <section id="achievements" class="container reveal" aria-label="Achievements and awards">
@@ -758,6 +924,71 @@
     <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
+
+    <!-- AI Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-toggle" id="chatbotToggle" aria-label="Open AI Assistant">
+            <i class="fas fa-robot"></i>
+            <span class="chatbot-pulse"></span>
+        </div>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div>
+                        <h4>Mahnoor's AI Assistant</h4>
+                        <span class="chatbot-status"><span class="status-dot"></span> Online</span>
+                    </div>
+                </div>
+                <button class="chatbot-close" id="chatbotClose" aria-label="Close chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chatbot-message bot">
+                    <div class="chatbot-msg-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="chatbot-msg-content">
+                        <p>Hi! I'm Mahnoor's AI assistant. Ask me anything about her skills, projects, or experience!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-suggestions">
+                <button class="chatbot-suggestion" data-question="skills">Skills</button>
+                <button class="chatbot-suggestion" data-question="projects">Projects</button>
+                <button class="chatbot-suggestion" data-question="experience">Experience</button>
+                <button class="chatbot-suggestion" data-question="contact">Contact</button>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbotInput" placeholder="Ask about Mahnoor..." aria-label="Type your message">
+                <button class="chatbot-send" id="chatbotSend" aria-label="Send message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keyboard Shortcuts Modal -->
+    <div class="shortcuts-modal" id="shortcutsModal">
+        <div class="shortcuts-content">
+            <div class="shortcuts-header">
+                <h3><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h3>
+                <button class="shortcuts-close" onclick="document.getElementById('shortcutsModal').classList.remove('active')" aria-label="Close shortcuts">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="shortcuts-list">
+                <div class="shortcut-item"><kbd>?</kbd><span>Show shortcuts</span></div>
+                <div class="shortcut-item"><kbd>↑</kbd> / <kbd>K</kbd><span>Previous section</span></div>
+                <div class="shortcut-item"><kbd>↓</kbd> / <kbd>J</kbd><span>Next section</span></div>
+                <div class="shortcut-item"><kbd>T</kbd><span>Toggle theme</span></div>
+                <div class="shortcut-item"><kbd>G</kbd><span>Go to GitHub</span></div>
+                <div class="shortcut-item"><kbd>C</kbd><span>Go to Contact</span></div>
+                <div class="shortcut-item"><kbd>Esc</kbd><span>Close modals</span></div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
