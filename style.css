@@ -3528,6 +3528,22 @@ section.section-active .section-badge {
 .skeleton-title { height: 24px; width: 60%; margin-bottom: 12px; }
 .skeleton-avatar { width: 80px; height: 80px; border-radius: 50%; }
 .skeleton-btn { height: 40px; width: 120px; border-radius: 8px; }
+.skeleton-text-sm {
+    display: inline-block;
+    min-width: 30px;
+    height: 16px;
+    background: linear-gradient(90deg, var(--bg-alt) 25%, var(--border) 50%, var(--bg-alt) 75%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s infinite;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+.skeleton-text-sm.loaded {
+    background: none;
+    animation: none;
+    min-width: auto;
+    height: auto;
+}
 
 /* ============================================
     SMOOTH PAGE LOAD

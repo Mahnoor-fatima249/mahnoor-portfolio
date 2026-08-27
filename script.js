@@ -397,13 +397,27 @@ function setupChatbot() {
 
 // ---------- LIVE GITHUB STATS ----------
 function fetchGitHubStats() {
+    const followersEl = document.getElementById('gh-followers');
+    const followingEl = document.getElementById('gh-following');
+    
+    // Show skeleton loading
+    if (followersEl) followersEl.classList.remove('loaded');
+    if (followingEl) followingEl.classList.remove('loaded');
+    
     fetch('https://api.github.com/users/Mahnoor-fatima249')
         .then(res => res.json())
         .then(data => {
-            const followersEl = document.getElementById('gh-followers');
-            const followingEl = document.getElementById('gh-following');
-            if (followersEl) followersEl.textContent = data.followers || '--';
-            if (followingEl) followingEl.textContent = data.following || '--';
+            if (followersEl) {
+                followersEl.textContent = data.followers || '--';
+                followersEl.classList.add('loaded');
+            }
+            if (followingEl) {
+                followingEl.textContent = data.following || '--';
+                followingEl.classList.add('loaded');
+            }
         })
-        .catch(() => {});
+        .catch(() => {
+            if (followersEl) followersEl.classList.add('loaded');
+            if (followingEl) followingEl.classList.add('loaded');
+        });
 }
