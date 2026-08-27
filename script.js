@@ -647,8 +647,10 @@ function setupDynamicTitle() {
         'services': '💼 What I Do',
         'experience': '🚀 Experience',
         'projects': '📂 Projects',
+        'github-stats': '📊 GitHub Activity',
         'leetcode': '💻 LeetCode Progress',
         'testimonials': '💬 Recommendations',
+        'blog': '📝 Tech Blog',
         'achievements': '🏆 Achievements',
         'certifications': '📜 Certifications',
         'contact': '📬 Get In Touch'
@@ -859,6 +861,12 @@ document.addEventListener('DOMContentLoaded', () => {
     setupKeyboardShortcuts();
     setupGSAPAnimations();
     setupSkillsTreeAnimation();
+
+    // Safety: show everything after 5s even if observers fail
+    setTimeout(() => {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+        document.body.style.overflow = 'auto';
+    }, 5000);
 });
 
 // ============================================
@@ -992,146 +1000,48 @@ function setupKeyboardShortcuts() {
 }
 
 // ============================================
-// GSAP SCROLL ANIMATIONS
+// GSAP SCROLL ANIMATIONS (safe - no hiding)
 // ============================================
 function setupGSAPAnimations() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-    gsap.registerPlugin(ScrollTrigger);
+    try {
+        gsap.registerPlugin(ScrollTrigger);
 
-    // Animate sections on scroll
-    gsap.utils.toArray('.container').forEach((section, i) => {
-        gsap.from(section, {
-            scrollTrigger: {
-                trigger: section,
-                start: 'top 85%',
-                toggleActions: 'play none none none'
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            delay: i * 0.05,
-            ease: 'power3.out'
+        // Hero section entrance animations (after splash)
+        gsap.from('.hero-badge', { y: 30, opacity: 0, duration: 0.6, delay: 3.5 });
+        gsap.from('.hero-title', { y: 40, opacity: 0, duration: 0.7, delay: 3.7 });
+        gsap.from('.tagline', { y: 30, opacity: 0, duration: 0.6, delay: 3.9 });
+        gsap.from('.hero-desc', { y: 30, opacity: 0, duration: 0.6, delay: 4.1 });
+        gsap.from('.hero-actions', { y: 30, opacity: 0, duration: 0.6, delay: 4.3 });
+        gsap.from('.hero-image-box', { x: 80, opacity: 0, duration: 0.8, delay: 4, ease: 'power3.out' });
+
+        // Animate sections on scroll
+        gsap.utils.toArray('.container').forEach((section, i) => {
+            gsap.from(section, {
+                scrollTrigger: { trigger: section, start: 'top 90%', toggleActions: 'play none none none' },
+                y: 40, opacity: 0, duration: 0.7, delay: i * 0.05, ease: 'power3.out'
+            });
         });
-    });
 
-    // Animate skill tags
-    gsap.utils.toArray('.skill-tag').forEach((tag, i) => {
-        gsap.from(tag, {
-            scrollTrigger: {
-                trigger: tag,
-                start: 'top 90%'
-            },
-            scale: 0.8,
-            opacity: 0,
-            duration: 0.4,
-            delay: i * 0.03,
-            ease: 'back.out(1.7)'
+        // Animate project cards
+        gsap.utils.toArray('.project-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: 'top 90%' },
+                y: 40, opacity: 0, duration: 0.5, delay: i * 0.08, ease: 'power3.out'
+            });
         });
-    });
 
-    // Animate project cards
-    gsap.utils.toArray('.project-card').forEach((card, i) => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 85%'
-            },
-            y: 60,
-            opacity: 0,
-            duration: 0.6,
-            delay: i * 0.1,
-            ease: 'power3.out'
+        // Animate stat boxes
+        gsap.utils.toArray('.stat-box').forEach((box, i) => {
+            gsap.from(box, {
+                scrollTrigger: { trigger: box, start: 'top 95%' },
+                y: 20, opacity: 0, duration: 0.4, delay: i * 0.1, ease: 'power2.out'
+            });
         });
-    });
-
-    // Animate timeline items
-    gsap.utils.toArray('.timeline-item').forEach((item, i) => {
-        gsap.from(item, {
-            scrollTrigger: {
-                trigger: item,
-                start: 'top 85%'
-            },
-            x: -50,
-            opacity: 0,
-            duration: 0.6,
-            delay: i * 0.15,
-            ease: 'power3.out'
-        });
-    });
-
-    // Animate stat boxes
-    gsap.utils.toArray('.stat-box').forEach((box, i) => {
-        gsap.from(box, {
-            scrollTrigger: {
-                trigger: box,
-                start: 'top 90%'
-            },
-            y: 30,
-            opacity: 0,
-            duration: 0.5,
-            delay: i * 0.1,
-            ease: 'power2.out'
-        });
-    });
-
-    // Parallax for background orbs
-    gsap.utils.toArray('.bg-orb').forEach((orb, i) => {
-        gsap.to(orb, {
-            scrollTrigger: {
-                trigger: 'body',
-                start: 'top top',
-                end: 'bottom bottom',
-                scrub: 1
-            },
-            y: (i + 1) * 100,
-            ease: 'none'
-        });
-    });
-
-    // Hero section animations
-    gsap.from('.hero-badge', {
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        delay: 3.5
-    });
-
-    gsap.from('.hero-title', {
-        y: 40,
-        opacity: 0,
-        duration: 0.7,
-        delay: 3.7
-    });
-
-    gsap.from('.tagline', {
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        delay: 3.9
-    });
-
-    gsap.from('.hero-desc', {
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        delay: 4.1
-    });
-
-    gsap.from('.hero-actions', {
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        delay: 4.3
-    });
-
-    gsap.from('.hero-image-box', {
-        x: 100,
-        opacity: 0,
-        duration: 0.8,
-        delay: 4,
-        ease: 'power3.out'
-    });
+    } catch(e) {
+        console.log('GSAP animations skipped:', e);
+    }
 }
 
 // ============================================
@@ -1176,36 +1086,4 @@ function animateTreeNodes() {
             });
         });
     }
-}
-
-// ---------- DYNAMIC PAGE TITLE ----------
-function setupDynamicTitle() {
-    const sections = document.querySelectorAll('section[id]');
-    const baseTitle = 'Mahnoor Fatima | AI & Backend Engineer';
-    const sectionTitles = {
-        'about': '👋 Hi, I\'m Mahnoor',
-        'education': '🎓 Education',
-        'skills': '⚡ Skills & Tech Stack',
-        'services': '💼 What I Do',
-        'experience': '🚀 Experience',
-        'projects': '📂 Projects',
-        'github-stats': '📊 GitHub Activity',
-        'leetcode': '💻 LeetCode Progress',
-        'testimonials': '💬 Recommendations',
-        'blog': '📝 Tech Blog',
-        'achievements': '🏆 Achievements',
-        'certifications': '📜 Certifications',
-        'contact': '📬 Get In Touch'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                document.title = sectionTitles[id] || baseTitle;
-            }
-        });
-    }, { threshold: 0.3 });
-
-    sections.forEach(s => observer.observe(s));
 }
