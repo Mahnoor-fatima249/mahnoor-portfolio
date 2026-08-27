@@ -327,8 +327,8 @@ function setupGSAPAnimations() {
         gsap.registerPlugin(ScrollTrigger);
         gsap.utils.toArray('.container').forEach((section, i) => {
             gsap.from(section, {
-                scrollTrigger: { trigger: section, start: 'top 90%' },
-                y: 30, opacity: 0, duration: 0.6, delay: i * 0.05, ease: 'power3.out'
+                scrollTrigger: { trigger: section, start: 'top 95%' },
+                y: 20, duration: 0.5, delay: i * 0.03, ease: 'power2.out'
             });
         });
     } catch(e) {}
