@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#about" class="skip-link">Skip to main content</a>
 
     <!-- Splash Screen -->
     <div class="splash-screen" id="splashScreen">
@@ -38,11 +40,11 @@
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- Animated Background -->
-    <div class="bg-orb bg-orb-1"></div>
-    <div class="bg-orb bg-orb-2"></div>
-    <div class="bg-orb bg-orb-3"></div>
-    <div class="bg-particles" id="bgParticles"></div>
-    <div class="mouse-blur" id="mouseBlur"></div>
+    <div class="bg-orb bg-orb-1" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-2" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-3" aria-hidden="true"></div>
+    <div class="bg-particles" id="bgParticles" aria-hidden="true"></div>
+    <div class="mouse-blur" id="mouseBlur" aria-hidden="true"></div>
 
     <!-- Floating Quick Nav -->
     <div class="floating-nav" id="floatingNav">
@@ -91,35 +93,35 @@
     </div>
 
     <!-- Navigation Bar -->
-    <nav id="mainNav">
-        <a href="#about" class="nav-brand">
+    <nav id="mainNav" aria-label="Main navigation">
+        <a href="#about" class="nav-brand" aria-label="Mahnoor Fatima - Home">
             <span class="brand-dot"></span>Mahnoor<span class="brand-dot"></span>
         </a>
-        <div class="hamburger" onclick="toggleMenu()">
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
             <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks" role="menubar">
+            <a href="#about" class="nav-btn" onclick="closeMenu()" role="menuitem">About</a>
+            <a href="#education" class="nav-btn" onclick="closeMenu()" role="menuitem">Education</a>
+            <a href="#skills" class="nav-btn" onclick="closeMenu()" role="menuitem">Skills</a>
+            <a href="#services" class="nav-btn" onclick="closeMenu()" role="menuitem">Services</a>
+            <a href="#experience" class="nav-btn" onclick="closeMenu()" role="menuitem">Experience</a>
+            <a href="#projects" class="nav-btn" onclick="closeMenu()" role="menuitem">Projects</a>
+            <a href="#leetcode" class="nav-btn" onclick="closeMenu()" role="menuitem">LeetCode</a>
+            <a href="#testimonials" class="nav-btn" onclick="closeMenu()" role="menuitem">Testimonials</a>
+            <a href="#achievements" class="nav-btn" onclick="closeMenu()" role="menuitem">Achievements</a>
+            <a href="#certifications" class="nav-btn" onclick="closeMenu()" role="menuitem">Certs</a>
+            <a href="#contact" class="nav-btn" onclick="closeMenu()" role="menuitem">Contact</a>
         </div>
-        <div class="nav-links" id="navLinks">
-            <a href="#about" class="nav-btn" onclick="closeMenu()">About</a>
-            <a href="#education" class="nav-btn" onclick="closeMenu()">Education</a>
-            <a href="#skills" class="nav-btn" onclick="closeMenu()">Skills</a>
-            <a href="#services" class="nav-btn" onclick="closeMenu()">Services</a>
-            <a href="#experience" class="nav-btn" onclick="closeMenu()">Experience</a>
-            <a href="#projects" class="nav-btn" onclick="closeMenu()">Projects</a>
-            <a href="#leetcode" class="nav-btn" onclick="closeMenu()">LeetCode</a>
-            <a href="#testimonials" class="nav-btn" onclick="closeMenu()">Testimonials</a>
-            <a href="#achievements" class="nav-btn" onclick="closeMenu()">Achievements</a>
-            <a href="#certifications" class="nav-btn" onclick="closeMenu()">Certs</a>
-            <a href="#contact" class="nav-btn" onclick="closeMenu()">Contact</a>
-        </div>
-        <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
-            <i class="fas fa-moon" id="theme-icon"></i>
+        <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme" aria-label="Toggle dark/light theme">
+            <i class="fas fa-moon" id="theme-icon" aria-hidden="true"></i>
             <span class="theme-toggle-ring"></span>
         </button>
     </nav>
 
     <!-- Hero Section -->
-    <section id="about" class="hero-container">
-        <div class="hero-glow"></div>
+    <section id="about" class="hero-container" aria-label="About me">
+        <div class="hero-glow" aria-hidden="true"></div>
         <div class="hero-content">
             <div class="hero-text-box reveal">
                 <span class="hero-badge"><i class="fas fa-code-branch"></i> 42+ GitHub Repos</span>
@@ -153,8 +155,8 @@
     </section>
 
     <!-- Stats Section -->
-    <div class="wave-divider"><svg viewBox="0 0 1200 50" preserveAspectRatio="none"><path d="M0,25 C200,50 400,0 600,25 C800,50 1000,0 1200,25 L1200,50 L0,50 Z" fill="var(--bg-alt)" opacity="0.5"/></svg></div>
-    <section class="container stats-container reveal">
+    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 50" preserveAspectRatio="none"><path d="M0,25 C200,50 400,0 600,25 C800,50 1000,0 1200,25 L1200,50 L0,50 Z" fill="var(--bg-alt)" opacity="0.5"/></svg></div>
+    <section class="container stats-container reveal" aria-label="Statistics">
         <div class="stats-grid">
             <div class="stat-box">
                 <div class="stat-icon"><i class="fab fa-github"></i></div>
@@ -180,8 +182,8 @@
     </section>
 
     <!-- Education Section -->
-    <div class="wave-divider"><svg viewBox="0 0 1200 50" preserveAspectRatio="none"><path d="M0,25 C300,0 600,50 900,25 C1050,10 1150,40 1200,25 L1200,50 L0,50 Z" fill="var(--bg-alt)" opacity="0.3"/></svg></div>
-    <section id="education" class="container reveal">
+    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 50" preserveAspectRatio="none"><path d="M0,25 C300,0 600,50 900,25 C1050,10 1150,40 1200,25 L1200,50 L0,50 Z" fill="var(--bg-alt)" opacity="0.3"/></svg></div>
+    <section id="education" class="container reveal" aria-label="Education">
         <h2><i class="fas fa-graduation-cap" style="color: var(--accent); margin-right: 10px;"></i>Education</h2>
         <div class="timeline">
             <div class="timeline-item">
@@ -197,7 +199,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="container reveal">
+    <section id="skills" class="container reveal" aria-label="Skills and technologies">
         <h2><i class="fas fa-wand-magic-sparkles" style="color: var(--accent); margin-right: 10px;"></i>Core Tech Stack & Skills</h2>
         <div class="skill-rings-grid">
             <div class="skill-ring-item">
@@ -261,8 +263,8 @@
     </section>
 
     <!-- Services Section -->
-    <div class="wave-divider"><svg viewBox="0 0 1200 50" preserveAspectRatio="none"><path d="M0,25 C150,50 350,0 500,30 C700,55 900,5 1100,25 L1200,30 L1200,50 L0,50 Z" fill="var(--bg-alt)" opacity="0.4"/></svg></div>
-    <section id="services" class="container reveal">
+    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 50" preserveAspectRatio="none"><path d="M0,25 C150,50 350,0 500,30 C700,55 900,5 1100,25 L1200,30 L1200,50 L0,50 Z" fill="var(--bg-alt)" opacity="0.4"/></svg></div>
+    <section id="services" class="container reveal" aria-label="Services">
         <h2><i class="fas fa-cubes" style="color: var(--accent); margin-right: 10px;"></i>What I Do</h2>
         <div class="services-grid">
             <div class="service-card tilt-card glass-hover neon-glow">
@@ -293,7 +295,7 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="container reveal">
+    <section id="experience" class="container reveal" aria-label="Professional experience">
         <h2><i class="fas fa-briefcase" style="color: var(--accent); margin-right: 10px;"></i>Professional Experience</h2>
         <div class="timeline">
             <div class="timeline-item">
@@ -336,8 +338,8 @@
     </section>
 
     <!-- Projects Section -->
-    <div class="wave-divider"><svg viewBox="0 0 1200 50" preserveAspectRatio="none"><path d="M0,30 C200,0 400,50 600,20 C800,0 1000,45 1200,25 L1200,50 L0,50 Z" fill="var(--bg-alt)" opacity="0.35"/></svg></div>
-    <section id="projects" class="container reveal">
+    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 50" preserveAspectRatio="none"><path d="M0,30 C200,0 400,50 600,20 C800,0 1000,45 1200,25 L1200,50 L0,50 Z" fill="var(--bg-alt)" opacity="0.35"/></svg></div>
+    <section id="projects" class="container reveal" aria-label="Projects">
         <h2><i class="fas fa-rocket" style="color: var(--accent); margin-right: 10px;"></i>My Projects</h2>
         <div class="project-grid">
             <div class="project-card tilt-card glass-hover neon-glow">
@@ -448,7 +450,7 @@
     </section>
 
     <!-- LeetCode Section -->
-    <section id="leetcode" class="container reveal">
+    <section id="leetcode" class="container reveal" aria-label="LeetCode progress">
         <h2><i class="fas fa-code" style="color: var(--accent); margin-right: 10px;"></i>LeetCode Progress</h2>
         <div class="leetcode-card">
             <div class="leetcode-header">
@@ -482,7 +484,7 @@
     </section>
 
     <!-- Testimonials -->
-    <section id="testimonials" class="container reveal">
+    <section id="testimonials" class="container reveal" aria-label="Recommendations and testimonials">
         <h2><i class="fas fa-quote-left" style="color: var(--accent); margin-right: 10px;"></i>Recommendations</h2>
         <div class="testimonial-grid">
             <div class="testimonial-card tilt-card">
@@ -541,25 +543,14 @@
                     </div>
                 </div>
             </div>
-             <div class="cert-card card" style="padding: 20px; border-radius: 16px;">
-                <h3>Lokesh Kumar</h3>
-                <p style="font-style: italic; margin-top: 10px; margin-bottom: 15px;">"It was a great experience working with Mahnoor. She was an excellent project team leader supportive, well-organized, and always motivated the team. Wishing her continued success in all her future endeavors."</p>
-                <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);">Hackathon Collaborator</span>
-            </div>
-             <div class="cert-card card" style="padding: 25px; border-radius: 16px;">
-               <h3 style="color: #3b7a8a; margin-bottom: 5px;">Maria Khalid</h3>
-               <p style="font-style: italic; margin-top: 10px; margin-bottom: 15px;">
-               "She demonstrates exceptional talent and a strong work ethic, consistently achieving her goals in an impressively short timeframe. I am incredibly proud to have her in my class. Her hard work and rapid growth are truly remarkable. Best wishes for her future endeavours."
-                </p>
-                <span class="skill-tag" style="background: rgba(59, 122, 138, 0.1); color: #3b7a8a; border-color: rgba(59, 122, 138, 0.3);">College Instructor</span>
-             </div>
+
         </div>
     </section>
 
     <!-- Colleague Testimonials - merged into testimonials above -->
 
     <!-- Achievements -->
-    <section id="achievements" class="container reveal">
+    <section id="achievements" class="container reveal" aria-label="Achievements and awards">
         <h2><i class="fas fa-trophy" style="color: var(--accent); margin-right: 10px;"></i>Achievements & Awards</h2>
         <div class="achievement-grid">
             <div class="achievement-card">
@@ -582,7 +573,7 @@
     </section>
 
     <!-- Certifications -->
-    <section id="certifications" class="container reveal">
+    <section id="certifications" class="container reveal" aria-label="Certifications">
         <h2><i class="fas fa-certificate" style="color: var(--accent); margin-right: 10px;"></i>Certifications</h2>
         <div class="cert-grid">
             <div class="flip-card">
@@ -724,25 +715,25 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="container reveal">
+    <section id="contact" class="container reveal" aria-label="Contact">
         <h2><i class="fas fa-envelope" style="color: var(--accent); margin-right: 10px;"></i>Get In Touch</h2>
         <p class="section-subtitle">Have a project in mind or want to collaborate? Drop a message!</p>
-        <form class="contact-form" action="https://formspree.io/f/xrenkkbz" method="POST">
+        <form class="contact-form" action="https://formspree.io/f/xrenkkbz" method="POST" aria-label="Contact form">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="name"><i class="fas fa-user"></i> Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <label for="name"><i class="fas fa-user" aria-hidden="true"></i> Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name">
                 </div>
                 <div class="form-group">
-                    <label for="email"><i class="fas fa-envelope"></i> Email</label>
-                    <input type="email" id="email" name="_replyto" placeholder="your@email.com" required>
+                    <label for="email"><i class="fas fa-envelope" aria-hidden="true"></i> Email</label>
+                    <input type="email" id="email" name="_replyto" placeholder="your@email.com" required autocomplete="email">
                 </div>
             </div>
             <div class="form-group">
-                <label for="message"><i class="fas fa-comment"></i> Message</label>
+                <label for="message"><i class="fas fa-comment" aria-hidden="true"></i> Message</label>
                 <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
             </div>
-            <button type="submit" class="action-btn primary-btn submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+            <button type="submit" class="action-btn primary-btn submit-btn"><i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message</button>
         </form>
     </section>
 
@@ -764,8 +755,8 @@
     </footer>
 
     <!-- Scroll to Top -->
-    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        <i class="fas fa-arrow-up"></i>
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
     <script src="script.js"></script>

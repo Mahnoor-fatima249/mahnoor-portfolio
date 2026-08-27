@@ -62,6 +62,44 @@ body {
     min-height: 100vh;
     transition: background var(--transition), color var(--transition);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessibility: Focus visible states */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Skip to main content link for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 16px;
+    z-index: 100000;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Selection styling */
+::selection {
+    background: rgba(2, 136, 209, 0.2);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] ::selection {
+    background: rgba(14, 165, 233, 0.3);
+    color: #f1f5f9;
 }
 
 /* Animated Background Mesh */
@@ -480,6 +518,25 @@ nav.scrolled {
     border-radius: 8px;
     font-size: 0.85rem;
     transition: all var(--transition);
+    position: relative;
+}
+
+.nav-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease, left 0.3s ease;
+    border-radius: 1px;
+}
+
+.nav-btn:hover::after,
+.nav-btn.active::after {
+    width: 60%;
+    left: 20%;
 }
 
 .nav-btn:hover, .nav-btn.active {
@@ -717,7 +774,7 @@ nav.scrolled {
 .image-frame:hover .main-profile-img { transform: scale(1.02); }
 
 /* ============================================
-   BUTTONS
+    BUTTONS
    ============================================ */
 .action-btn {
     display: inline-flex;
@@ -732,6 +789,26 @@ nav.scrolled {
     transition: all var(--transition);
     border: none;
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.action-btn:active::before {
+    width: 300px;
+    height: 300px;
 }
 
 .primary-btn {
@@ -755,6 +832,27 @@ nav.scrolled {
     background: var(--accent);
     color: #fff;
     transform: translateY(-2px);
+}
+
+/* Button loading state */
+.action-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.action-btn.loading::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: btnSpin 0.8s linear infinite;
+    margin-left: 8px;
+}
+
+@keyframes btnSpin {
+    to { transform: rotate(360deg); }
 }
 
 /* ============================================
@@ -802,12 +900,30 @@ nav.scrolled {
     border: 1px solid var(--border);
     background: var(--bg-alt);
     transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .stat-box:hover {
     transform: translateY(-5px);
     border-color: var(--accent);
     box-shadow: 0 8px 25px var(--accent-glow);
+}
+
+.stat-box:hover::before {
+    opacity: 1;
 }
 
 .stat-icon {
@@ -942,6 +1058,23 @@ nav.scrolled {
     border: 1px solid var(--accent-glow-strong);
     transition: all var(--transition);
     cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.skill-tag:hover::before {
+    left: 100%;
 }
 
 .skill-tag:hover {
@@ -996,6 +1129,17 @@ nav.scrolled {
     transition: transform var(--transition);
 }
 
+.service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.4s ease, left 0.4s ease;
+}
+
 .service-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent);
@@ -1003,6 +1147,7 @@ nav.scrolled {
 }
 
 .service-card:hover::before { transform: scaleX(1); }
+.service-card:hover::after { width: 60%; left: 20%; }
 
 .service-icon-wrap {
     width: 60px;
@@ -1071,12 +1216,29 @@ nav.scrolled {
     transition: all var(--transition);
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    transition: width 0.4s ease;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
 .project-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent);
     box-shadow: 0 10px 30px var(--accent-glow);
+}
+
+.project-card:hover::after {
+    width: 100%;
 }
 
 .project-card-header {
@@ -1460,10 +1622,28 @@ nav.scrolled {
     resize: vertical;
 }
 
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-glow);
+    background: var(--bg-card);
+}
+
+/* Form validation styles */
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+    border-color: #10b981;
+}
+
+.form-group input:invalid:not(:placeholder-shown):not(:focus),
+.form-group textarea:invalid:not(:placeholder-shown):not(:focus) {
+    border-color: #ef4444;
 }
 
 /* ============================================
@@ -1940,6 +2120,19 @@ footer {
     background: var(--bg-card);
     border-top: 1px solid var(--border);
     margin-top: 60px;
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    border-radius: 2px;
 }
 
 .footer-brand {
