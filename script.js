@@ -20,7 +20,52 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFloatingNav();
     setupChatbot();
     setupGSAPAnimations();
+    typeEffect();
 });
+
+// ---------- TYPING EFFECT ----------
+const typingPhrases = [
+    "Agentic AI Developer",
+    "Backend Engineer",
+    "LLM & RAG Specialist",
+    "Hackathon Team Lead",
+    "Building AI Products"
+];
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeEffect() {
+    const el = document.getElementById('typingText');
+    if (!el) return;
+    const current = typingPhrases[phraseIndex];
+    if (isDeleting) {
+        el.textContent = current.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        el.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
+    }
+    let speed = isDeleting ? 50 : 100;
+    if (!isDeleting && charIndex === current.length) {
+        speed = 2000;
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % typingPhrases.length;
+        speed = 400;
+    }
+    setTimeout(typeEffect, speed);
+}
+
+// ---------- WELCOME SCREEN ----------
+function openPortfolio(event) {
+    event.preventDefault();
+    const ws = document.getElementById('welcome-screen');
+    ws.classList.add('fade-out');
+    document.body.style.overflow = 'auto';
+    setTimeout(() => ws.style.display = 'none', 700);
+}
 
 // ---------- THEME TOGGLE ----------
 function toggleTheme() {
