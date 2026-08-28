@@ -1294,6 +1294,18 @@ nav.scrolled {
     color: #fff;
 }
 
+.coming-soon-badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, rgba(2, 136, 209, 0.15), rgba(14, 165, 233, 0.1));
+    color: var(--accent);
+    border: 1px solid rgba(2, 136, 209, 0.3);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
 .project-card h3 {
     font-size: 1.1rem;
     font-weight: 700;
