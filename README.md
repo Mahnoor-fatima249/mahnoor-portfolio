@@ -34,7 +34,7 @@ former_role: "Technical Director @ WICS"
 
 highlights:
   - "HEC GenAI Top Performer — 96.08%"
-  - "42+ Public GitHub Repositories"
+  - "46+ Public GitHub Repositories"
   - "Hackathon Team Lead"
   - "Building Agentic AI Systems"
 ```
@@ -73,6 +73,7 @@ highlights:
 | 🧠 | **Mahnoor AI** | LLM · NLP | [Live](https://huggingface.co/spaces/bc230425989/Mahnoor-AI) |
 | 🌐 | **Language Translator** | Python · API | [Live](https://huggingface.co/spaces/bc230425989/Language-translator) |
 | 👁️ | **AI Object Detection** | Caffe · CV | [Repo](https://github.com/Mahnoor-fatima249/AI-Object-Detection-Caffe) |
+| 💳 | **Subscription Payment Backend** | TypeScript · Next.js · Stripe | [Repo](https://github.com/Mahnoor-fatima249/Subscription-Payment-Backend) · [Live](https://frontend-brown-nine-45.vercel.app/) |
 
 </div>
 
