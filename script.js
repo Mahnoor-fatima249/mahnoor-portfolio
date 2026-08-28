@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFloatingNav();
     setupChatbot();
     setupGSAPAnimations();
+    setupParallaxScroll();
     typeEffect();
     fetchGitHubStats();
 });
@@ -232,14 +233,34 @@ function setupTiltEffect() {
     document.querySelectorAll('.tilt-card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
-            const x = (e.clientX - rect.left - rect.width / 2) / 15;
-            const y = (rect.height / 2 - (e.clientY - rect.top)) / 15;
-            card.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg) scale3d(1.02, 1.02, 1.02)`;
+            const x = (e.clientX - rect.left - rect.width / 2) / 20;
+            const y = (rect.height / 2 - (e.clientY - rect.top)) / 20;
+            const glareX = ((e.clientX - rect.left) / rect.width) * 100;
+            const glareY = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.transform = `perspective(800px) rotateX(${y}deg) rotateY(${x}deg) scale3d(1.03, 1.03, 1.03)`;
+            card.style.setProperty('--glare-x', glareX + '%');
+            card.style.setProperty('--glare-y', glareY + '%');
         });
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
         });
     });
+}
+
+// ---------- SMOOTH PARALLAX SCROLL ----------
+function setupParallaxScroll() {
+    const orbs = document.querySelectorAll('.bg-orb');
+    const heroImg = document.querySelector('.hero-image-box');
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        orbs.forEach((orb, i) => {
+            const speed = (i + 1) * 0.03;
+            orb.style.transform = `translateY(${scrollY * speed}px)`;
+        });
+        if (heroImg && scrollY < window.innerHeight) {
+            heroImg.style.transform = `translateY(${scrollY * 0.15}px)`;
+        }
+    }, { passive: true });
 }
 
 // ---------- CARD FLIP ----------
