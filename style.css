@@ -326,25 +326,18 @@ img { max-width: 100%; height: auto; }
     padding: 50px 40px;
     max-width: 520px;
     width: 90%;
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--bg-card);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     border-radius: var(--radius-xl);
-    box-shadow:
-        0 25px 80px rgba(2, 136, 209, 0.12),
-        0 8px 32px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border);
     animation: fadeInScale 0.8s ease-out;
 }
 
 [data-theme="dark"] .welcome-card {
-    background: rgba(15, 26, 40, 0.6);
-    border-color: rgba(255, 255, 255, 0.08);
-    box-shadow:
-        0 25px 80px rgba(2, 136, 209, 0.15),
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    background: var(--bg-card);
+    border-color: var(--border);
 }
 
 .welcome-avatar-ring {
@@ -915,8 +908,8 @@ nav.scrolled {
 .stat-box {
     padding: 25px 15px;
     border-radius: var(--radius-md);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--border);
+    background: var(--bg-alt);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1716,8 +1709,8 @@ nav.scrolled {
 .testimonial-card.glass-hover {
     position: relative;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
@@ -1726,8 +1719,8 @@ nav.scrolled {
 [data-theme="dark"] .service-card.glass-hover,
 [data-theme="dark"] .project-card.glass-hover,
 [data-theme="dark"] .testimonial-card.glass-hover {
-    background: rgba(15, 26, 40, 0.55);
-    border-color: rgba(255, 255, 255, 0.06);
+    background: var(--bg-alt);
+    border-color: var(--border);
 }
 
 .service-card.glass-hover::after,
@@ -1766,23 +1759,19 @@ nav.scrolled {
 .project-card.glass-hover:hover,
 .testimonial-card.glass-hover:hover {
     transform: translateY(-8px) scale(1.02);
-    background: rgba(255, 255, 255, 0.65);
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: var(--accent);
     box-shadow:
-        0 20px 60px rgba(2, 136, 209, 0.15),
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        inset 0 0 30px rgba(255, 255, 255, 0.1);
+        0 20px 60px rgba(2, 136, 209, 0.12),
+        0 8px 32px rgba(0, 0, 0, 0.06);
 }
 
 [data-theme="dark"] .service-card.glass-hover:hover,
 [data-theme="dark"] .project-card.glass-hover:hover,
 [data-theme="dark"] .testimonial-card.glass-hover:hover {
-    background: rgba(15, 26, 40, 0.75);
-    border-color: rgba(2, 136, 209, 0.2);
+    border-color: var(--accent);
     box-shadow:
         0 20px 60px rgba(2, 136, 209, 0.2),
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 0 30px rgba(255, 255, 255, 0.03);
+        0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 /* ============================================
