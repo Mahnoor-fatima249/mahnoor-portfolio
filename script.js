@@ -347,7 +347,7 @@ function setupChatbot() {
 
     const responses = {
         skills: "Mahnoor is skilled in:\n\n Python (90%) | Django (80%) | FastAPI (85%)\n React (75%) | AI/LLM (85%) | Docker (70%)\n\nShe also knows JavaScript, Java, C++, and has strong DSA fundamentals!",
-        projects: "Mahnoor has built 43+ projects including:\n\n AI Study Assistant - LLM-powered learning\n AI Agentic Dev - Autonomous AI workflows\n LLM Cost Tracker - API cost monitoring\n PAK Job Finder - Job portal\n\nCheck out the Projects section for more!",
+        projects: "Mahnoor has built 46+ projects including:\n\n AI Study Assistant - LLM-powered learning\n AI Agentic Dev - Autonomous AI workflows\n LLM Cost Tracker - API cost monitoring\n PAK Job Finder - Job portal\n\nCheck out the Projects section for more!",
         experience: "Mahnoor's experience:\n\n Current: Backend Developer @ NexeAgent\n Technical Director @ WICS\n Team Lead @ National Hackathons\n Intern @ TEYZIX CORE & DecodeLabs\n\nShe's a proven leader with 3+ internships!",
         contact: "You can reach Mahnoor through:\n\n LinkedIn: mahnoor-fatima-529b91301\n GitHub: Mahnoor-fatima249\n Instagram: @mahnoor_backend\n\nOr use the Contact form on this portfolio!",
         education: "Mahnoor is pursuing:\n\n BSIT at Virtual University of Pakistan\n Currently in 6th Semester\n HEC GenAI Top Performer (96.08%!)\n\nShe's focused on software engineering and AI!",
